@@ -1,0 +1,18 @@
+/* pages/phone-bind/phone-bind.wxss */
+
+.form-view {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: white;
+  height: 60px;
+}
+
+.form-label {
+  margin-left: 15px;
+  flex: 0 0 85px;
+}
+
+.form-input {
+  
+}

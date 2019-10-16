@@ -1,0 +1,14 @@
+<!--pages/phone-bind/phone-bind.wxml-->
+
+<view class="form-view">
+  <text class="form-label">联系电话</text>
+  <input value="{{ phoneNumber }}" class="form-input" type="number" placeholder="请输入手机号"></input>
+</view>
+
+<view class="form-view">
+  <text class="form-label">验证码</text>
+  <input value="{{ code }}" class="form-input" type="number" placeholder="请输入验证码"></input>
+  <i-button bind:click="handleClick" type="primary" size="small">获取验证码</i-button>
+</view>
+
+<i-button bind:click="handleClick" type="primary">确认绑定</i-button>

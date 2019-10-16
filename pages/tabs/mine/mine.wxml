@@ -1,0 +1,26 @@
+<!--pages/mine/mine.wxml-->
+<view class="user-view">
+  <image wx:if="{{!hasUserInfo && canIUse}}" class="userinfo-avatar" src="../../../resource/images/default-headimage.png" mode="cover"></image>
+  <image wx:if="{{hasUserInfo}}" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+
+  <button wx:if="{{!hasUserInfo && canIUse}}" class="userinfo-button" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+  <text wx:if="{{hasUserInfo}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
+</view>
+
+<i-button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary" >手机号绑定</i-button>
+
+<!-- <view class="care-elevator-view">
+  <image src="../../../resource/images/mine-care-elevator.png" bindtap="toCareElevator" class="care-elevator" mode="widthFix"></image>
+</view> -->
+
+<i-cell-group class="cell-group">  
+  <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">
+    <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
+  </i-cell>
+  <i-cell title="分享" is-link url="/pages/rescue/rescue-info/rescue-info">
+    <i-icon slot="icon" type="share" size="28" color="#80848f" />
+  </i-cell>
+  <i-cell title="关于" is-link url="/pages/about/about">
+    <i-icon slot="icon" type="prompt" size="28" color="#80848f" />
+  </i-cell>
+</i-cell-group>

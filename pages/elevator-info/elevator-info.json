@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "电梯详情",
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index"
+  }
+}

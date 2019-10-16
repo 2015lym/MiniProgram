@@ -1,0 +1,46 @@
+/* pages/mine/mine.wxss */
+
+page {
+  background-color: white;
+}
+
+.user-view {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 15px;
+  border-radius: 50%;
+}
+
+.userinfo-nickname {
+  margin-left: 15px;
+  font-size: 22px;
+}
+
+.userinfo-button {
+  margin-left: 0px;
+  font-size: 22px;
+  background-color: white;
+}
+
+button::after {
+  border: none;
+}
+
+.care-elevator-view {
+  width: 100%;
+  text-align: center;
+}
+
+.care-elevator {
+  width: 92%;
+}
+
+
+.cell-group {
+  margin-top: 15px;
+}

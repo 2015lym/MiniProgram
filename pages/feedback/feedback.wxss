@@ -1,0 +1,22 @@
+/* pages/feedback/feedback.wxss */
+
+.feedback-view {
+  height: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 15px;
+  margin-bottom: 45px;
+}
+
+.feedback-area {
+  background-color: white;
+  height: 220px;
+  width: 100%;
+  padding: 16px;
+}
+
+.feedback-number {
+  background-color: white;
+  width: 100%;
+  text-align: right;
+}

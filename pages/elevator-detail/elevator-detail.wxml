@@ -1,0 +1,87 @@
+<!--pages/elevator-detail/elevator-detail.wxml-->
+
+<!-- canvas.wxml -->
+
+<view class="top-view">
+  <i-button bind:click="handleClick" type="success" size="small" bindtap="careElevator">{{careElevatorText}}</i-button>
+  <i-button bind:click="handleClick" type="warning" size="small" bindtap="elevatorInfo">电梯信息</i-button>
+</view>
+
+<canvas class="cycle-view" canvas-id="firstCanvas">
+  <view class="cycle-subview" bindtap="addScore">
+    <text style="text-align:center"><text style="font-size: 25px">75分</text>\n<text style="color:#B2B4B8;font-size: 14px">综合评分</text>\n<text style="color:#121010;font-size: 11px">7项</text><text style="color:#B2B4B8;font-size: 11px"> 测评项目</text></text>
+  </view>
+</canvas>
+
+<view class="info-view">
+  <view class="info-subview" bindtap="checkInsurance">
+    <text style="color: #57BE6C">平安保险承保</text>
+    <text class="gray-text">\n电梯保险</text>
+  </view>
+  <view class="info-subview" bindtap="checkMaintain">距离上次维保14天\n
+    <text class="gray-text">\n维保信息</text>
+  </view>
+  <view class="info-subview">监督检查\n
+    <text class="gray-text">\n查看详情</text>
+  </view>
+</view>
+
+<view class="echarts-title-view">
+  <text class="view-title">运行里程\n<text class="gray-text">近7天运行总里程<text style="color: #2C8BEF"> 123923KM</text></text></text>
+  <button class="more-button" style="color: #2c8bef" bindtap="runMileage">更多</button>
+</view>
+<echarts1></echarts1>
+
+<view class="echarts-title-view">
+  <text class="view-title">运行次数\n<text class="gray-text">近7天运行总次数<text style="color: #57BE6C"> 1234次</text></text></text>
+  <button class="more-button" style="color: #57BE6C" bindtap="runNumber">更多</button>
+</view>
+<echarts2></echarts2>
+
+<view class="echarts-title-view">
+  <text class="view-title">开关门次数\n<text class="gray-text">近7天开关门总次数<text style="color: #F3993E"> 434次</text></text></text>
+  <button class="more-button" style="color: #F3993E" bindtap="openCloseNumber">更多</button>
+</view>
+<echarts3></echarts3>
+
+<view class="echarts-title-view">
+  <text class="view-title">故障次数\n<text class="gray-text">近7天故障总次数<text style="color: #2C8BEF"> 23次</text></text></text>
+  <button class="more-button" style="color: #2C8BEF" bindtap="errorNumber">更多</button>
+</view>
+<echarts4></echarts4>
+
+<view class="echarts-title-view">
+  <text class="view-title">电梯综合评分</text>
+  <button class="more-button" style="color: #2C8BEF" bindtap="moreScore">更多</button>
+</view>
+<i-card>
+  <view slot="content" class="evaluate-top">
+    <text>刘东晓</text>
+    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+  </view>
+  <view slot="footer" class="evaluate-footer">
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+  </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="evaluate-top">
+    <text>刘东晓</text>
+    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+  </view>
+  <view slot="footer" class="evaluate-footer">
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+  </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="evaluate-top">
+    <text>刘东晓</text>
+    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+  </view>
+  <view slot="footer" class="evaluate-footer">
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+  </view>
+</i-card>
+
+<view style="height: 30px"></view>

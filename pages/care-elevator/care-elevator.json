@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "关注电梯",
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-icon": "../../dist/icon/index"
+  }
+}

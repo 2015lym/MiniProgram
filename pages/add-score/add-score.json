@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "评分列表",
+  "usingComponents": {
+    "i-rate": "../../dist/rate/index"
+  }
+}

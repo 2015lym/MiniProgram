@@ -1,0 +1,88 @@
+/* pages/elevator-maintain/elevator-maintain.wxss */
+
+
+.top-card {
+  margin: 16px;
+  background-color: #2c8bef;
+  border-radius: 15px;
+  padding: 16px 16px;
+  color: white;
+  display: flex;
+}
+
+.left-view {
+  width: 80px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.left-image {
+  width: 75px;
+}
+
+.right-view {
+  margin-left: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+
+.top-card-content {
+  font-size: 14px;
+  line-height: 25px;
+  width: 100%;
+}
+
+.contacts-view {
+  margin: 16px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 8px 16px;
+  color: #004E9F;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 46px;
+}
+
+.contacts-button {
+  width: 90px;
+  height: 30px;
+  color: white;
+  background-color: #2787FE;
+  border-radius: 15px;
+  font-size: 14px;
+  margin-right: 0px;
+}
+
+.history-card {
+  margin: 16px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 16px 16px;
+}
+
+.history-title {
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.history-view {
+  display: flex;
+  color: #004E9E;
+}
+
+.season-view {
+  background-color: #CCE3FF;
+  border-radius: 5px;
+}
+
+.remark-view {
+  font-size: 11px;
+  margin-bottom: 30px;
+}

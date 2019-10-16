@@ -1,0 +1,85 @@
+/* pages/elevator-detail/elevator-detail.wxss */
+
+page {
+  background-color: white;
+}
+
+.top-view {
+  width: 120px;
+  height: auto;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+.i-btn-small {
+  height: 30px;
+  line-height: 30px;
+}
+
+.cycle-view {
+  width: 150px;
+  height: 190px;
+  margin: 0 auto;
+}
+
+.cycle-subview {
+  margin-top: 40px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.info-view {
+  margin-top: 45px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.info-subview {
+  width: 33.3%;
+  text-align: center;
+  font-size: 15px;
+}
+
+.gray-text {
+  font-size: 12px;
+  color: #cdced1;
+}
+
+.echarts-title-view {
+  margin-top: 30px;
+  display: flex;
+  align-items: baseline;
+}
+
+.view-title {
+  margin-left: 32px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.more-button {
+  background-color: white;
+  font-size: 12px;
+  margin-right: 0px;
+}
+
+button::after {
+  border: none;
+}
+
+.evaluate-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+}
+
+.evaluate-footer {
+  padding: 6px 16px;
+  border-top: 1px solid #e9eaec;
+}

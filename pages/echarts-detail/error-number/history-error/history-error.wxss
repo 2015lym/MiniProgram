@@ -1,0 +1,55 @@
+/* pages/echarts-detail/error-number/history-error/history-error.wxss */
+
+.top-card {
+  margin: 16px;
+  background-color: #2c8bef;
+  border-radius: 15px;
+  padding: 10px 32px;
+  color: white;
+}
+
+.top-card-content {
+  font-size: 16px;
+  line-height: 35px;
+  font-weight: bold;
+}
+
+.top-card-subview {
+  margin: 32px;
+  margin-top: -55px;
+  background-color: white;
+  border-radius: 15px;
+  height: 100px;
+  display: flex;
+}
+
+.sides-view {
+  color: #666666;
+  width: 50%;
+  height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+
+.view-title {
+  margin-left: 32px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.bottom-card {
+  margin: 16px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 10px 16px;
+  color: #7d7d7d;
+}
+
+.bottom-card-content {
+  font-size: 12px;
+  line-height: 30px;
+}

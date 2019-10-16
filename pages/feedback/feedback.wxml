@@ -1,0 +1,9 @@
+<!--pages/feedback/feedback.wxml-->
+<view class="feedback-view">
+  <textarea class="feedback-area" value="{{feedbackText}}" placeholder="请填写问题描述以便我们提供更好的帮助" maxlength="100" bindinput="bindinput"></textarea>
+  <view class="feedback-number">{{numberText}}</view>
+</view>
+
+<i-button bind:click="submit" type="primary">提交</i-button>
+
+<i-toast id="toast" />

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "运行次数详情",
+  "usingComponents": {
+    "echarts2": "../elevator-detail/echarts2/echarts2"
+  }
+}

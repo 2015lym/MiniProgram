@@ -1,0 +1,36 @@
+/* pages/home.wxss */
+
+.swiper-banner {
+  width: 100%;
+}
+
+.swiper-banner-img {
+  width: 100%;
+  height: inherit;
+}
+
+.care-text {
+  margin: 16px;
+  color: #525a6e;
+}
+
+.list-content-view {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-footer {
+  display: flex;
+  background-color: #f3f9ff;
+}
+
+.list-footer-view {
+  width: 50%;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.color-text {
+  color: white;
+  border-radius: 12px;
+}

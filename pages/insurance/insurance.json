@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "电梯保险",
+  "usingComponents": {
+    "i-toast": "../../dist/toast/index"
+  }
+}

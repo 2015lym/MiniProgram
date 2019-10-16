@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "故障次数详情",
+  "usingComponents": {
+    "echarts4": "../elevator-detail/echarts4/echarts4"
+  }
+}

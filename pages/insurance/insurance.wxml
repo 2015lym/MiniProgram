@@ -1,0 +1,15 @@
+<!--pages/insurance/insurance.wxml-->
+<view class="insurance-topview">
+  <view class="title-view">
+    <text style="color: #2C8BEF; font-size: 20px;">投保日期：2019年9月19日\n<text style="color: #838587; font-size: 16px;">Tips：按住保单图片将保单保存到手机</text></text>
+  </view>
+  <view class="right-image">
+    <image class="right-image" mode="widthFix" src="../../resource/images/insurance.png"></image>
+  </view>
+</view>
+
+<view class="documents-image-view" bindlongtap="downloadImage">
+  <image class="documents-image" mode="widthFix" src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=666915515,3161272054&fm=26&gp=0.jpg"></image>
+</view>
+
+<i-toast id="toast" />

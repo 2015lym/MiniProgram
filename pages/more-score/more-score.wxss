@@ -1,0 +1,12 @@
+/* pages/more-score/more-score.wxss */
+
+.evaluate-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: no-wrap;
+}
+
+.evaluate-footer {
+  padding: 6px 16px;
+  border-top: 1px solid #e9eaec;
+}

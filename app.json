@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/tabs/home/home",
+    "pages/tabs/mine/mine",
+    "pages/phone-bind/phone-bind",
+    "pages/feedback/feedback",
+    "pages/about/about",
+    "pages/elevator-detail/elevator-detail",
+    "pages/care-elevator/care-elevator",
+    "pages/elevator-info/elevator-info",
+    "pages/echarts-detail/error-number/error-number",
+    "pages/echarts-detail/run-close-number/run-close-number",
+    "pages/echarts-detail/run-mileage/run-mileage",
+    "pages/echarts-detail/run-number/run-number",
+    "pages/more-score/more-score",
+    "pages/elevator-maintain/elevator-maintain",
+    "pages/insurance/insurance",
+    "pages/echarts-detail/error-number/history-error/history-error",
+    "pages/rescue/rescue-info/rescue-info",
+    "pages/add-score/add-score"
+  ],
+  "tabBar": {
+    "selectedColor": "#2C8BEF",
+    "list": [
+      {
+        "selectedIconPath": "resource/images/首页-选中.png",
+        "iconPath": "resource/images/首页-未选中.png",
+        "pagePath": "pages/tabs/home/home",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "resource/images/我的-选中.png",
+        "iconPath": "resource/images/我的-未选中.png",
+        "pagePath": "pages/tabs/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FEFEFE"
+  },
+  "sitemapLocation": "sitemap.json"
+}

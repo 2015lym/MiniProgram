@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "维保信息详情",
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index"
+  }
+}
