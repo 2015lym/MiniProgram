@@ -31,16 +31,6 @@ button::after {
   border: none;
 }
 
-.care-elevator-view {
-  width: 100%;
-  text-align: center;
-}
-
-.care-elevator {
-  width: 92%;
-}
-
-
 .cell-group {
   margin-top: 15px;
 }

@@ -9,10 +9,6 @@
 
 <i-button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary" >手机号绑定</i-button>
 
-<!-- <view class="care-elevator-view">
-  <image src="../../../resource/images/mine-care-elevator.png" bindtap="toCareElevator" class="care-elevator" mode="widthFix"></image>
-</view> -->
-
 <i-cell-group class="cell-group">  
   <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">
     <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
