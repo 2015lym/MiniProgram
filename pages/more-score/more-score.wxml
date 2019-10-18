@@ -1,10 +1,43 @@
 <!--pages/more-score/more-score.wxml-->
+<view class="blank-view"></view>
 
-
+<i-card>
   <view slot="content" class="evaluate-top">
     <text>刘东晓</text>
     <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
   </view>
   <view slot="footer" class="evaluate-footer">
-    <i-rate value="3"></i-rate><text style="color: #FF9F00"> 3星</text>
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
   </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="evaluate-top">
+    <text>刘东晓</text>
+    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+  </view>
+  <view slot="footer" class="evaluate-footer">
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+  </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="evaluate-top">
+    <text>刘东晓</text>
+    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+  </view>
+  <view slot="footer" class="evaluate-footer">
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+  </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="evaluate-top">
+    <text>刘东晓</text>
+    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+  </view>
+  <view slot="footer" class="evaluate-footer">
+    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+  </view>
+</i-card>
+<view class="blank-view"></view>

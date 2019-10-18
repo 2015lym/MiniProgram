@@ -1,11 +1,10 @@
 // pages/elevator-detail/echarts1/echarts1.js
 import * as echarts from '../../../ec-canvas/echarts';
 
-const app = getApp();
-
+let chart = null;
 
 function initChart(canvas, width, height) {
-  const chart = echarts.init(canvas, null, {
+  chart = echarts.init(canvas, null, {
     width: width,
     height: height
   });
@@ -40,7 +39,7 @@ function initChart(canvas, width, height) {
     series: [{
       type: 'line',
       smooth: true,
-      data: [18, 36, 65, 30, 78, 40, 33]
+      data: [0, 0, 0, 0, 0, 0, 0]
     }]
   };
   chart.setOption(option);
@@ -52,7 +51,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    echartsData: Object
   },
 
   /**
@@ -69,5 +68,25 @@ Component({
    */
   methods: {
 
+  },
+
+  observers: {
+    'echartsData': function () {
+      if (this.data.echartsData) {
+        var array = [];
+        for (var i = 0; i < this.data.echartsData.length; i++) {
+          array.push(this.data.echartsData[i].LockBrakeTimes)
+        }
+        setTimeout(function () {
+          chart.setOption({
+            series: [{
+              type: 'line',
+              smooth: true,
+              data: array
+            }]
+          })
+        }, 500);
+      }
+    }
   }
 })

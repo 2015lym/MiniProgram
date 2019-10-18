@@ -7,30 +7,31 @@
   </block>
 </swiper>
 <view class="care-text">我关注的电梯</view>
-<i-card wx:for="{{bnrUrl}}" wx:key="key" bindtap="gotoDetail">
+
+<i-card wx:for="{{listData}}" wx:for-item="item" wx:key="key" bindtap="gotoDetail">
   <view slot="content">
     <view class="list-content-view">
       <text>
-        所在楼层 <text space="nbsp" class="color-text" style="background-color: #2c8bef;">  18↑ </text>
+        所在楼层 <text space="nbsp" class="color-text" style="background-color: #2c8bef;">  {{item.Floor}}↑ </text>
       </text>
       <text>
         楼层繁忙度 <text space="nbsp" class="color-text" style="background-color: #EC3F14;">  忙  </text>
       </text>
       <text>
-        综合评分 <text space="nbsp" class="color-text" style="background-color: #2c8bef;">  9.5  </text>
+        综合评分 <text space="nbsp" class="color-text" style="background-color: #2c8bef;">  {{item.ComprehensiveScore}}  </text>
       </text>
     </view>
     <view style="margin-top: 15px">
       <i-icon type="coordinates_fill" size="20" />
-      <text>辽宁省 锦州市 黑山县 黑山镇大中路18</text>
+      <text>{{item.InstallationAddress}}</text>
     </view>
   </view>
   <view slot="footer" class="list-footer">
     <view class="list-footer-view" style="margin-left:16px">
-      <text>距离上次维保时间(天):29\n\n故障(次):2</text>
+      <text>距离上次维保时间(天):{{item.MaintenanceDays}}\n\n故障(次):{{item.RescueTimes}}</text>
     </view>
     <view class="list-footer-view" style="margin-left:16px">
-      <text>救援(次):2\n\n不文明次数(次):2</text>
+      <text>救援(次):{{item.NumberOfFailures}}\n\n不文明次数(次):{{item.NumberOfUncivilizedTimes}}</text>
     </view>
   </view>
 </i-card>

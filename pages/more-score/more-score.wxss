@@ -10,3 +10,7 @@
   padding: 6px 16px;
   border-top: 1px solid #e9eaec;
 }
+
+.blank-view {
+  height: 30px;
+}

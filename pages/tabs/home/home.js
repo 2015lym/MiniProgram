@@ -1,6 +1,6 @@
 // pages/home.js
 
-const Request = require("../../../utils/request.js");
+const Request = require('../../../utils/request.js');
 
 Page({
 
@@ -8,25 +8,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    "bnrUrl": [{
-      "url": "../../../resource/images/banner.jpg"
+    bnrUrl: [{
+      'url': '../../../resource/images/banner.jpg'
     }, {
-        "url": "../../../resource/images/banner.jpg"
+      'url': '../../../resource/images/banner.jpg'
     }, {
-        "url": "../../../resource/images/banner.jpg"
-    }]
+      'url': '../../../resource/images/banner.jpg'
+    }],
+    listData: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    // Request.post("/api/xcxWxLogin", {  //调用方法
-
-    // }).then(res => { //成功回调
-    //   //todo
-    // }).catch(err => { }); //异常回调
-
+    Request.post('WeChatMiniApps/GetFollowLift', {
+      PageIndex: 1,
+      PageSize: 10
+    }).then(res => {
+      this.setData({
+        listData: JSON.parse(res.data.Data)
+      });
+    }).catch(err => {});
   },
 
   /**
@@ -78,7 +81,7 @@ Page({
 
   },
 
-  gotoDetail: function () {
+  gotoDetail: function() {
     wx.navigateTo({
       url: '../../elevator-detail/elevator-detail?isCare=0'
     })

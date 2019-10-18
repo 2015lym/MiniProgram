@@ -4,7 +4,6 @@ const Request = require("./utils/request.js");
 App({
   userInfo: null,
   baseUrl: 'https://www2.dianti119.com/api/',
-
   onLaunch: function() {
     // 登录
     wx.login({
@@ -48,7 +47,6 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
-              console.log(res.userInfo)
               Request.post('WeChatMiniApps/SaveMiniAppsUser', {
                 nickname: res.userInfo.nickname,
                 sex: res.userInfo.gender,
@@ -57,9 +55,11 @@ App({
                 country: res.userInfo.country,
                 headimgurl: res.userInfo.avatarUrl
               }).then(res => {
-                console.log(res)
                 if (res.data.Success == true) {
-
+                  wx.setStorage({
+                    key: 'userInfo',
+                    data: JSON.parse(res.data.Data)
+                  })
                 }
               }).catch(err => {});
 

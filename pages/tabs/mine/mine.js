@@ -1,5 +1,7 @@
 // pages/mine/mine.js
 const Request = require("../../../utils/request.js");
+const { $Toast } = require('../../../dist/base/index');
+
 
 const app = getApp()
 
@@ -123,13 +125,34 @@ Page({
   },
   // 绑定手机号
   getPhoneNumber(e) {
-    console.log(e.detail.errMsg)
-    console.log(e.detail.iv)
-    console.log(e.detail.encryptedData)
-  },
-  toCareElevator: function() {
-    wx.navigateTo({
-      url: '../../care-elevator/care-elevator'
-    })
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
+      $Toast({
+        content: '未获取到手机号',
+        type: 'error'
+      });
+    } else {
+      Request.post('WeChatMiniApps/BindUser', {
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        sessionKey: wx.getStorageSync('sessionKey'),
+      }).then(res => {
+        console.log(res)
+        if (res.data.Success == true) {
+          $Toast({
+            content: '绑定成功',
+            type: 'success'
+          });
+          wx.setStorage({
+            key: 'userInfo',
+            data: JSON.parse(res.data.Data)
+          });
+        } else {
+          $Toast({
+            content: res.data.Message,
+            type: 'success'
+          });
+        }
+      }).catch(err => { });
+    }
   }
 })

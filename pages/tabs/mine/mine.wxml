@@ -20,3 +20,5 @@
     <i-icon slot="icon" type="prompt" size="28" color="#80848f" />
   </i-cell>
 </i-cell-group>
+
+<i-toast id="toast" />
