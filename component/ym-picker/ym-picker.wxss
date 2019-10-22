@@ -1,0 +1,22 @@
+/* component/ym-picker/ym-picker.wxss */
+
+.ym-cell {
+  padding: 12px 15px;
+  display: flex;
+  background: #fff;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 1.4;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+.i-input-title {
+  color: #495060;
+  min-width: 65px;
+  padding-right: 10px;
+}
+
+.picker-class {
+  color: #495060;
+}

@@ -1,0 +1,10 @@
+<view class="ym-cell">
+  <view wx:if="{{title}}" class="i-input-title">{{title}}</view>
+  <picker 
+    mode="{{mode}}" 
+    value="{{value}}" 
+    range="{{range}}"
+    range-key="name"
+    class="picker-class" 
+    bindchange="bindDataChange">{{displayValue}}</picker>
+</view>

@@ -22,14 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    Request.post('WeChatMiniApps/GetFollowLift', {
-      PageIndex: 1,
-      PageSize: 10
-    }).then(res => {
-      this.setData({
-        listData: JSON.parse(res.data.Data)
-      });
-    }).catch(err => {});
+
   },
 
   /**
@@ -43,7 +36,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    Request.post('WeChatMiniApps/GetFollowLift', {
+      PageIndex: 1,
+      PageSize: 10
+    }).then(res => {
+      this.setData({
+        listData: JSON.parse(res.data.Data)
+      });
+    }).catch(err => { });
   },
 
   /**

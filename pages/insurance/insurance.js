@@ -27,4 +27,14 @@ Page({
   onReady: function () {
 
   },
+  // 购买保险
+  buyInsurance: function () {
+    wx.navigateTo({
+      url: './buy-insurance/buy-insurance',
+    })
+  },
+  // 批量购买保险
+  bulkBuyInsurance: function () {
+
+  }
 })

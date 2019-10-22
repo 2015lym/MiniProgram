@@ -17,7 +17,8 @@
     "pages/insurance/insurance",
     "pages/echarts-detail/error-number/history-error/history-error",
     "pages/rescue/rescue-info/rescue-info",
-    "pages/add-score/add-score"
+    "pages/add-score/add-score",
+    "pages/insurance/buy-insurance/buy-insurance"
   ],
   "tabBar": {
     "selectedColor": "#2C8BEF",

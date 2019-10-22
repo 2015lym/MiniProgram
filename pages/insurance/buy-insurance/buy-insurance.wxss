@@ -1,0 +1,5 @@
+/* pages/insurance/buy-insurance/buy-insurance.wxss */
+
+.cell-color {
+  color: #495060;
+}
