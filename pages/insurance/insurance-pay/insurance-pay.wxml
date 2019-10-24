@@ -1,0 +1,18 @@
+<!--pages/insurance/insurance-pay/insurance-pay.wxml-->
+
+<view class="back-view">
+  <text class="title-view">支付方式一（推荐）：\n</text>
+  <text>点击复制按钮，在浏览器里粘贴并打开【太平洋保险】支付页面，点击立即支付，使用微信完成支付。\n</text>
+  <text>【太平洋保险】支付地址：\n</text>
+  <text class="text-view">{{payUrl}}</text>
+  <i-button bind:click="copyUrl" type="primary" size="small">复制</i-button>
+</view>
+
+<view class="back-view">
+  <text class="title-view">支付方式二：\n</text>
+  <text>扫描下方二维码，在浏览器里打开【太平洋保险】支付页面，点击立即支付，使用微信完成支付。
+  </text>
+</view>
+
+
+<canvas class="qrcode-view" canvas-id="myQrcode"></canvas>

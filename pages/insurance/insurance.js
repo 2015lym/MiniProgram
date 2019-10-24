@@ -1,5 +1,7 @@
 // pages/insurance/insurance.js
 
+const Request = require('../../utils/request.js');
+
 const {
   $Toast
 } = require('../../dist/base/index');
@@ -11,30 +13,39 @@ Page({
    * 页面的初始数据
    */
   data: {
+    liftId: '',
+    listData: {}
+  },
+  onLoad: function(options) {
+    this.setData({
+      liftId: options.liftId
+    })
+  },
+  onShow: function() {
+    Request.get('WeChatMiniApps/GetLiftInsuranceInfo', {
+      liftId: this.data.liftId
+    }).then(res => {
+      if (res.data.Success == true) {
+        this.setData({
+          listData: JSON.parse(res.data.Data)
+        });
+      } else {
 
+      }
+    }).catch(err => {});
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
   // 购买保险
-  buyInsurance: function () {
+  buyInsurance: function() {
     wx.navigateTo({
-      url: './buy-insurance/buy-insurance',
+      url: './buy-insurance/buy-insurance?apltName=' + this.data.listData.UseDepartment +
+      '&liftIds=[' + this.data.liftId + ']' 
     })
   },
   // 批量购买保险
-  bulkBuyInsurance: function () {
-
+  bulkBuyInsurance: function() {
+    wx.navigateTo({
+      url: './bulk-buy-insurance/bulk-buy-insurance?apltName=' + this.data.listData.UseDepartment
+    })
   }
 })

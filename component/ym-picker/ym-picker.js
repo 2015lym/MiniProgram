@@ -19,10 +19,26 @@ Component({
     displayValue: {
       type: String,
       value: '请选择'
+    },
+    startTime: {
+      type: String,
+      value: ''
     }
   },
   pageLifetimes: {
     show: function () {
+      var timestamp = Date.parse(new Date()) + 24 * 60 * 60 * 1000;
+      var date = new Date(timestamp);
+      //获取年份  
+      var Y = date.getFullYear();
+      //获取月份  
+      var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+      //获取当日日期 
+      var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+      this.setData({
+        startTime: Y+'-'+M+'-'+D
+      })
+      console.log("当前时间：" + this.data.startTime);
     }
   },
   methods: {

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "保险支付",
+  "usingComponents": {
+    "i-button": "../../dist/button/index"
+  }
+}

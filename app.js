@@ -48,7 +48,7 @@ App({
                 this.userInfoReadyCallback(res)
               }
               Request.post('WeChatMiniApps/SaveMiniAppsUser', {
-                nickname: res.userInfo.nickname,
+                nickname: res.userInfo.nickName,
                 sex: res.userInfo.gender,
                 province: res.userInfo.province,
                 city: res.userInfo.city,

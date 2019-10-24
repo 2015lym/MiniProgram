@@ -1,23 +1,28 @@
 // pages/elevator-detail/elevator-detail.js
 const Request = require("../../utils/request.js");
 
+const {
+  $Toast
+} = require('../../dist/base/index');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    liftNum: '',
     feedbackText: '',
     numberText: '0/100',
     elevatorData: {}
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
+  onLoad: function (options) {
+    this.setData({
+      liftNum: options.liftNum
+    })
     Request.post('WeChatMiniApps/GetNearlyDays', {
-      LiftNum: '粤100420'
+      liftNum: this.data.liftNum
     }).then(res => {
       if (res.data.Success == true) {
         this.setData({
@@ -133,9 +138,16 @@ Page({
   },
   // 查看保险
   checkInsurance: function() {
-    wx.navigateTo({
-      url: '../insurance/insurance'
-    })
+    if (this.data.elevatorData.IsPurchaseAuthority) {
+      wx.navigateTo({
+        url: '../insurance/insurance?liftId=' + this.data.elevatorData.Id
+      })
+    } else {
+      $Toast({
+        content: '无权限',
+        type: 'error'
+      });
+    }
   },
   // 查看维保
   checkMaintain: function() {

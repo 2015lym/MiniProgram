@@ -4,6 +4,7 @@
     mode="{{mode}}" 
     value="{{value}}" 
     range="{{range}}"
+    start="{{startTime}}"
     range-key="name"
     class="picker-class" 
     bindchange="bindDataChange">{{displayValue}}</picker>

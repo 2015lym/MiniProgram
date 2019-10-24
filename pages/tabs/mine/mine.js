@@ -106,7 +106,7 @@ Page({
         hasUserInfo: true
       });
       Request.post('WeChatMiniApps/SaveMiniAppsUser', {
-        nickname: this.data.userInfo.nickname,
+        nickname: this.data.userInfo.nickName,
         sex: this.data.userInfo.gender,
         province: this.data.userInfo.province,
         city: this.data.userInfo.city,

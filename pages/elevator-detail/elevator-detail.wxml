@@ -16,7 +16,8 @@
 
 <view class="info-view">
   <view class="info-subview" bindtap="checkInsurance">
-    <text style="color: #57BE6C">平安保险承保</text>
+    <text wx:if="{{elevatorData.IsAlreadyPurchased}}" class="color-text">{{elevatorData.InsuranceCarriers}}承保</text>
+    <text wx:if="{{!elevatorData.IsAlreadyPurchased}}" class="color-text">暂无数据</text>
     <text class="gray-text">\n电梯保险</text>
   </view>
   <view class="info-subview" bindtap="checkMaintain">距离上次维保{{elevatorData.MaintenanceDays}}天\n
@@ -27,25 +28,25 @@
   </view>
 </view>
 
-<view class="echarts-title-view">
+<view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">运行里程\n<text class="gray-text">近7天运行总里程<text style="color: #2C8BEF"> {{elevatorData.OperatingMileage}}KM</text></text></text>
   <button class="more-button" style="color: #2c8bef" bindtap="runMileage">更多</button>
 </view>
 <echarts1 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts1>
 
-<view class="echarts-title-view">
+<view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">运行次数\n<text class="gray-text">近7天运行总次数<text style="color: #57BE6C"> {{elevatorData.NumberOfRuns}}次</text></text></text>
   <button class="more-button" style="color: #57BE6C" bindtap="runNumber">更多</button>
 </view>
 <echarts2 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts2>
 
-<view class="echarts-title-view">
+<view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">开关门次数\n<text class="gray-text">近7天开关门总次数<text style="color: #F3993E"> {{elevatorData.OpenDoorTimes}}次</text></text></text>
   <button class="more-button" style="color: #F3993E" bindtap="openCloseNumber">更多</button>
 </view>
 <echarts3 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts3>
 
-<view class="echarts-title-view">
+<view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">故障次数\n<text class="gray-text">近7天故障总次数<text style="color: #2C8BEF"> {{elevatorData.NumberOfFailures}}次</text></text></text>
   <button class="more-button" style="color: #2C8BEF" bindtap="errorNumber">更多</button>
 </view>
@@ -86,3 +87,5 @@
 </i-card>
 
 <view class="blank-view"></view>
+
+<i-toast id="toast" />

@@ -10,6 +10,9 @@
 <i-button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary" >手机号绑定</i-button>
 
 <i-cell-group class="cell-group">  
+  <i-cell title="电梯保险订单" is-link url="/pages/insurance/insurance-order/insurance-order">
+    <i-icon slot="icon" type="commodity" size="28" color="#80848f" />
+  </i-cell>
   <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">
     <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
   </i-cell>

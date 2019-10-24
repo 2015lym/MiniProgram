@@ -1,6 +1,6 @@
 <!--pages/insurance/buy-insurance/buy-insurance.wxml-->
 <i-panel title="电梯安全责任保险">
-  <i-input right title="承保公司" value="太平洋保险" disabled/>
+  <i-input right title="承保公司" value="{{submitData.insuranceCarriers}}" disabled/>
   <i-input right title="保险金额" value="500万元/电梯" disabled/>
   <ym-picker title="保险起期" mode="date" bind:selectEvent="selectStartTime"></ym-picker>
   <i-input right title="保险止期" value="{{endTime}}" disabled/>
@@ -10,13 +10,13 @@
 </i-panel>
 
 <i-panel title="投保人信息">
-  <i-input right title="投保人名称" value="沈阳万科物业服务有限公司" disabled/>
+  <i-input right title="投保人名称" value="{{submitData.entity.applicant.apltName}}" placeholder="请输入" bind:change="changeApltName" />
   <i-input right title="投保人证件类型" value="营业执照" disabled/>
-  <i-input right title="投保人证件号码" value="" placeholder="请输入" />
-  <i-input right title="投保人移动电话" value="" placeholder="请输入" />
-  <i-input right title="投保人固定电话" value="" placeholder="请输入(可选)" />
-  <i-input right title="投保人邮箱" value="" placeholder="请输入(可选)" />
-  <i-input right title="投保人地址" value="" placeholder="请输入(可选)" />
+  <i-input right title="投保人证件号码" placeholder="请输入" bind:change="changeApltCretCode"/>
+  <i-input right title="投保人移动电话" placeholder="请输入" bind:change="changeApltMobile"/>
+  <i-input right title="投保人固定电话" placeholder="请输入(可选)" bind:change="changeApltTelephone"/>
+  <i-input right title="投保人邮箱" placeholder="请输入(可选)" bind:change="changeApltEmail"/>
+  <i-input right title="投保人地址" placeholder="请输入(可选)" bind:change="changeApltAddress"/>
 </i-panel>
 
 
@@ -28,7 +28,7 @@
 
 <view wx:if="{{!isEqualPeople}}">
   <i-panel title="被保人信息" wx:for="{{recognizeeInfo}}" wx:key="Id">
-    <i-input right title="被保人名称" value="沈阳万科物业服务有限公司" disabled/>
+    <i-input right title="被保人名称" value="{{submitData.entity.applicant.apltName}}"/>
     <i-input right title="被保人证件类型" value="营业执照" disabled/>
     <i-input right title="被保人证件号码" value="" placeholder="请输入" />
     <i-input right title="被保人移动电话" value="" placeholder="请输入" />
@@ -42,8 +42,15 @@
 <i-panel title="支付与发票信息">
   <i-input right title="支付方式" value="微信" disabled/>
   <ym-picker title="发票类型" mode="selector" range="{{invoiceArray}}" value="0" displayValue="普票" bind:selectEvent="selectInvoice"></ym-picker>
-  <i-input right title="电子发票接收邮箱" value="" placeholder="请输入" />
+  <i-input wx:if="{{submitData.invoiceType == '0'}}" right title="电子发票接收邮箱" bind:change="changeInvoiceReceivMail" placeholder="请输入" />
+  <view wx:if="{{submitData.invoiceType == '1'}}">
+    <i-input right title="开户银行" bind:change="changeInvoiceBank" placeholder="请输入" />
+    <i-input right title="银行账户" bind:change="changeInvoiceBankNum" placeholder="请输入" />
+    <i-input right title="电话号码" bind:change="changeInvoicePhone" placeholder="请输入" />
+    <i-input right title="单位地址" bind:change="changeInvoiceAddress" placeholder="请输入" />
+  </view>
 </i-panel>
+<text wx:if="{{submitData.invoiceType == '1'}}" class="sign-text">提示：专票请到【太平洋保险】营业网点领取。</text>
 
 <i-panel title="电子保单发送通知">
   <i-cell title="短信通知" class="cell-color">

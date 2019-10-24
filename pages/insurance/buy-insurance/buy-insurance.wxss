@@ -3,3 +3,8 @@
 .cell-color {
   color: #495060;
 }
+
+.sign-text {
+  margin-left: 16px;
+  font-size: 12px;
+}
