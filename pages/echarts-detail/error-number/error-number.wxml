@@ -2,26 +2,26 @@
 <view class="top-back-view">
   <view style="height: 30px"></view>
   <view class="echarts-card">
-    <text class="view-title">7天故障总次数\n<text class="view-subtitle">125324353</text>
+    <text class="view-title">7天故障总次数\n<text class="view-subtitle">{{elevatorData.NumberOfFailures}}次</text>
     </text>
-    <echarts4></echarts4>
+    <echarts4 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts4>
   </view>
 </view>
 
-<view class="list-item-view" style="margin-top: 150px">
+<!-- <view class="list-item-view" style="margin-top: 150px">
   <view class="list-item-view-left">
     <image src="../../../resource/images/elevator-echarts.png" class="list-item-view-image"></image>
     <text>智慧电梯故障次数</text>
   </view>
   <view>14588次</view>
-</view>
+</view> -->
 
-<view class="list-item-view">
+<view class="list-item-view" style="margin-top: 150px">
   <view class="list-item-view-left">
     <image src="../../../resource/images/elevator-echarts.png" class="list-item-view-image"></image>
     <text>故障评级</text>
   </view>
-  <view>8级</view>
+  <view>{{elevatorData.ComprehensiveScore}}分</view>
 </view>
 
 <view class="list-item-view" bindtap="checkHistory">

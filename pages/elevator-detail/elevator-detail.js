@@ -1,4 +1,5 @@
 // pages/elevator-detail/elevator-detail.js
+
 const Request = require("../../utils/request.js");
 
 const {
@@ -18,9 +19,25 @@ Page({
   },
 
   onLoad: function (options) {
-    this.setData({
-      liftNum: options.liftNum
-    })
+    if (options.q) {
+      var url = decodeURIComponent(options.q);
+      var index = url.indexOf("=") + 1;
+      var num = decodeURI(url.slice(index))
+      this.setData({
+        liftNum: num
+      })
+    } else {
+      this.setData({
+        liftNum: options.liftNum
+      })
+    }
+    
+    if (!this.data.liftNum) {
+      $Toast({
+        content: '缺少电梯id',
+        type: 'error'
+      });
+    }
     Request.post('WeChatMiniApps/GetNearlyDays', {
       liftNum: this.data.liftNum
     }).then(res => {
@@ -82,6 +99,13 @@ Page({
         }
       }).catch(err => {});
     } else {
+      if (!wx.getStorageSync('userInfo').Phone) {
+        $Toast({
+          content: '请先到个人中心绑定手机号',
+          type: 'error'
+        });
+        return;
+      }
       Request.post('WeChatMiniApps/FollowLift', {
         LiftId: this.data.elevatorData.Id
       }).then(res => {
@@ -95,39 +119,39 @@ Page({
   },
   // 新增评分
   addScore: function() {
-    wx.navigateTo({
-      url: '../add-score/add-score'
-    })
+    // wx.navigateTo({
+    //   url: '../add-score/add-score'
+    // })
   },
   // 电梯信息
   elevatorInfo: function() {
     wx.navigateTo({
-      url: '../elevator-info/elevator-info'
+      url: '../elevator-info/elevator-info?liftId=' + this.data.elevatorData.Id
     })
   },
 
   // 运行里程
   runMileage: function() {
     wx.navigateTo({
-      url: '../echarts-detail/run-mileage/run-mileage?data=' + JSON.stringify(this.data.elevatorData.NearlyDaysModels)
+      url: '../echarts-detail/run-mileage/run-mileage?data=' + JSON.stringify(this.data.elevatorData)
     })
   },
   // 运行次数
   runNumber: function() {
     wx.navigateTo({
-      url: '../echarts-detail/run-number/run-number'
+      url: '../echarts-detail/run-number/run-number?data=' + JSON.stringify(this.data.elevatorData)
     })
   },
   // 开关门次数
   openCloseNumber: function() {
     wx.navigateTo({
-      url: '../echarts-detail/run-close-number/run-close-number'
+      url: '../echarts-detail/run-close-number/run-close-number?data=' + JSON.stringify(this.data.elevatorData)
     })
   },
   // 故障次数
   errorNumber: function() {
     wx.navigateTo({
-      url: '../echarts-detail/error-number/error-number'
+      url: '../echarts-detail/error-number/error-number?data=' + JSON.stringify(this.data.elevatorData)
     })
   },
   // 更多评分
@@ -152,7 +176,7 @@ Page({
   // 查看维保
   checkMaintain: function() {
     wx.navigateTo({
-      url: '../elevator-maintain/elevator-maintain'
+      url: '../elevator-maintain/elevator-maintain?data=' + JSON.stringify(this.data.elevatorData)
     })
   }
 

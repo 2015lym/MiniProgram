@@ -1,47 +1,50 @@
 <!--pages/echarts-detail/error-number/history-error/history-error.wxml-->
 <view class="top-card">
   <i-icon type="prompt_fill" size="20" />
-  <text class="top-card-content"> 故障名称-轿厢故障\n</text>
-  <text class="top-card-content">发生时间：2019-1-1 12:12:12\n</text>
-  <text class="top-card-content">恢复时间：2019-1-1 12:12:12\n</text>
-  <view class="top-card-content" style="margin-bottom: 40px;">距离上次维保7天</view>
+  <text class="top-card-content"> 故障名称-{{listData.FaultName}}\n</text>
+  <text class="top-card-content">发生时间：{{listData.OccurrenceTime}}\n</text>
+  <text class="top-card-content">恢复时间：{{listData.RecoveryTime}}\n</text>
+  <view class="top-card-content" style="margin-bottom: 40px;">距离上次维保{{listData.MaintenanceDays}}天</view>
 </view>
 
 <view class="top-card-subview">
   <view class="sides-view">
     <view style="width:100%; text-align:center">
       <i-icon type="other" size="20" />被困人数</view>
-    <text style="color: #0852A0">4人</text>
+    <text style="color: #0852A0">{{listData.NumberOfTrappedPersons}}人</text>
   </view>
   <view class="sides-view">
     <view style="width:100%; text-align:center">
       <i-icon type="time" size="20" />危险指数</view>
-    <text style="color: #FF5346">高</text>
+    <text style="color: #FF5346">{{listData.DangerIndex}}</text>
   </view>
 </view>
 
 <text class="view-title">故障原因</text>
 <view class="bottom-card">
-  <text class="bottom-card-content">电梯日常维护保养单位未能切实履行维护保养职责，电梯日常维护保养不到位，如不按规定的频次和质量要求维保，部件润滑不足、异物卡阻、零部件松动疲劳损坏后得不到及时更换调整、保护功能失效后得不到有效处理等;还有些维保单位低价争保揽保，不按规定配备足够数量的维保人员，以修代保。</text>
+  <text class="bottom-card-content">{{listData.CauseOfIssue}}</text>
 </view>
 
 <text class="view-title">电梯信息</text>
 <view class="bottom-card">
-  <text class="bottom-card-content">电梯类型：老旧电梯
-  注册代码：312323232323232
-  制造单位：辽宁华盾制造公司
-  电梯品牌：剑牌
-  注册代码：1239034930
-  登记机关：辽宁电梯协会
-  使用单位：华盾测试电梯使用单位</text>
-  <text class="bottom-card-content">\n管理人员：刘动晓 </text>
-  <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
-  <text class="bottom-card-content">\n维保单位：上海世纪爱睡觉工程有限公司</text>
-  <text class="bottom-card-content">\n维保人员：章一 </text>
-  <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  <text class="bottom-card-content">电梯类型：{{elevatorData.LiftType}}
+  注册代码：{{elevatorData.CertificateNum}}
+  制造单位：{{elevatorData.MadeDepartment}}
+  电梯品牌：{{elevatorData.Brand}}
+  登记机关：{{elevatorData.RegisterDepartment}}
+  使用单位：{{elevatorData.UseDepartment}}</text>
+  <view wx:for="{{elevatorData.UseUsers}}" wx:for-item="item" wx:key="Mobile" data-item="{{item}}" bindtap="callPhone">
+    <text class="bottom-card-content">管理人员：{{item.UserName}} </text>
+    <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  </view>
+  <text class="bottom-card-content">维保单位：{{elevatorData.MaintenanceDepartment}}</text>
+  <view wx:for="{{elevatorData.MaintUsers}}" wx:for-item="item" wx:key="Mobile" data-item="{{item}}" bindtap="callPhone">
+    <text class="bottom-card-content">维保人员：{{item.UserName}} </text>
+    <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  </view>
 </view>
 
-<text class="view-title">报警信息</text>
+<!-- <text class="view-title">报警信息</text>
 <view class="bottom-card">
   <text class="bottom-card-content">报警时间：2018.12.12 13:12:12
   任务来源：视频机报警
@@ -50,4 +53,4 @@
   任务备注：无
   救援人员：张三
   完成时间：2018.12.12 17:12:12</text>
-</view>
+</view> -->

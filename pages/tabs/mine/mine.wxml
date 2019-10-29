@@ -7,7 +7,7 @@
   <text wx:if="{{hasUserInfo}}" class="userinfo-nickname">{{userInfo.nickName}}</text>
 </view>
 
-<i-button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary" >手机号绑定</i-button>
+<i-button wx:if="{{hasUserInfo}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" type="primary" >手机号绑定</i-button>
 
 <i-cell-group class="cell-group">  
   <i-cell title="电梯保险订单" is-link url="/pages/insurance/insurance-order/insurance-order">
@@ -16,12 +16,14 @@
   <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">
     <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
   </i-cell>
-  <i-cell title="分享" is-link url="/pages/rescue/rescue-info/rescue-info">
+  <!-- <i-cell title="分享" is-link url="/pages/rescue/rescue-info/rescue-info">
     <i-icon slot="icon" type="share" size="28" color="#80848f" />
   </i-cell>
   <i-cell title="关于" is-link url="/pages/about/about">
     <i-icon slot="icon" type="prompt" size="28" color="#80848f" />
-  </i-cell>
+  </i-cell> -->
 </i-cell-group>
 
 <i-toast id="toast" />
+
+<!-- <button open-type="contact" show-message-card="true">客服</button> -->

@@ -2,9 +2,9 @@
 <view class="top-back-view">
   <view style="height: 30px"></view>
   <view class="echarts-card">
-    <text class="view-title">7天开关门总次数\n<text class="view-subtitle">125324353</text>
+    <text class="view-title">7天开关门总次数\n<text class="view-subtitle">{{elevatorData.OpenDoorTimes}}次</text>
     </text>
-    <echarts3></echarts3>
+    <echarts3 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts3>
   </view>
 </view>
 
@@ -13,10 +13,10 @@
     <image src="../../../resource/images/elevator-echarts.png" class="list-item-view-image"></image>
     <text>平均开关门次数</text>
   </view>
-  <view>14588次</view>
+  <view>{{elevatorData.AverageOpenDoorTimes}}次</view>
 </view>
 
-<view class="list-item-view">
+<!-- <view class="list-item-view">
   <view class="list-item-view-left">
     <image src="../../../resource/images/elevator-echarts.png" class="list-item-view-image"></image>
     <text>智慧电梯检测开关门次数</text>
@@ -31,4 +31,4 @@
   </view>
   <view>14588次</view>
 </view>
-
+ -->

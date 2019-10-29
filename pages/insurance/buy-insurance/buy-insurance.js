@@ -29,10 +29,6 @@ Page({
       {
         id: 'P110749001900000006',
         name: '辽宁电梯 - 非住宅(公共场所)'
-      },
-      {
-        id: 'P110749001900000015',
-        name: '测试用0.01元电梯'
       }
     ],
     // 电梯类型
@@ -344,6 +340,17 @@ Page({
     })
   },
 
+  // 接收手机、邮箱
+  changeInvoiceMobile(e) {
+    this.setData({
+      'submitData.entity.elcPolicy.elcMobile': e.detail.detail.value
+    })
+  },
+  changeInvoiceEmail(e) {
+    this.setData({
+      'submitData.entity.elcPolicy.elcEmail': e.detail.detail.value
+    })
+  },
 
   submit() {
     if (this.data.isEqualPeople == true) {
@@ -363,7 +370,10 @@ Page({
       });
     }
 
-    if (this.checkData()) {
+    if (
+      this.checkData() &&
+      this.checkInvoiceData() &&
+      this.checkInvoiceNoteData()) {
       console.log(this.data.submitData)
       Request.post('WeChatMiniApps/SaveInsuranceOrders', this.data.submitData).then(res => {
         if (res.data.Success == true) {
@@ -398,39 +408,115 @@ Page({
       });
       return false;
     } else {
-      if (this.data.isSendNote) {
-        this.setData({
-          'submitData.entity.elcPolicy.elcMsgFlag': '1'
+      if (!this.testPhone(this.data.submitData.entity.applicant.apltMobile)) {
+        $Toast({
+          content: '投保人移动电话输入错误',
+          type: 'error'
         });
-        if (!this.data.submitData.entity.elcPolicy.elcMobile) {
-          $Toast({
-            content: '请输入接收短信手机号码',
-            type: 'error'
-          });
-          return false;
-        }
-      } else {
-        this.setData({
-          'submitData.entity.elcPolicy.elcEmlFlag': '0'
-        });
+        return false;
       }
-      if (this.data.isSendEmail) {
-        this.setData({
-          'submitData.entity.elcPolicy.elcEmlFlag': '1'
+      return true;
+    }
+  },
+
+  checkInvoiceData() {
+    if (this.data.submitData.invoiceType == '0') {
+      var email = this.data.submitData.electronicInvoiceReceivingMailbox;
+      if (!email) {
+        $Toast({
+          content: '请输入电子发票接收邮箱',
+          type: 'error'
         });
-        if (!this.data.submitData.entity.elcPolicy.elcEmail) {
-          $Toast({
-            content: '请输入接收邮箱',
-            type: 'error'
-          });
-          return false;
-        }
-      } else {
-        this.setData({
-          'submitData.entity.elcPolicy.elcEmlFlag': '0'
-        });
+        return false;
       }
+      if (!this.testEmail(email)) {
+        $Toast({
+          content: '电子发票接收邮箱输入错误',
+          type: 'error'
+        });
+        return false;
+      }
+    } else {
+      if (
+        !this.data.submitData.bankName ||
+        !this.data.submitData.bankAccount ||
+        !this.data.submitData.telephoneNumber ||
+        !this.data.submitData.unitAddress)
+        $Toast({
+          content: '请填写完整',
+          type: 'error'
+        });
       return false;
+    }
+    return true;
+  },
+
+  checkInvoiceNoteData() {
+    if (this.data.isSendNote) {
+      this.setData({
+        'submitData.entity.elcPolicy.elcMsgFlag': '1'
+      });
+      var phone = this.data.submitData.entity.elcPolicy.elcMobile;
+      if (!phone) {
+        $Toast({
+          content: '请输入接收短信手机号码',
+          type: 'error'
+        });
+        return false;
+      } else {
+        if (!this.testPhone(phone)) {
+          $Toast({
+            content: '接收短信手机号码输入错误',
+            type: 'error'
+          });
+          return false;
+        }
+      }
+    } else {
+      this.setData({
+        'submitData.entity.elcPolicy.elcEmlFlag': '0'
+      });
+    }
+    if (this.data.isSendEmail) {
+      this.setData({
+        'submitData.entity.elcPolicy.elcEmlFlag': '1'
+      });
+      var email = this.data.submitData.entity.elcPolicy.elcEmail;
+      if (!email) {
+        $Toast({
+          content: '请输入接收邮箱',
+          type: 'error'
+        });
+        return false;
+      } else {
+        if (!this.testEmail(email)) {
+          $Toast({
+            content: '电子保单接收邮箱输入错误',
+            type: 'error'
+          });
+          return false;
+        }
+      }
+    } else {
+      this.setData({
+        'submitData.entity.elcPolicy.elcEmlFlag': '0'
+      });
+    }
+    return true;
+  },
+  testPhone(phone) {
+    if (!(/^1[3456789]\d{9}$/.test(phone))) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+
+  testEmail(email) {
+    if (!(/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(email))) {
+      return false;
+    } else {
+      return true;
     }
   }
 })

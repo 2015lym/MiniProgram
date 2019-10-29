@@ -15,7 +15,7 @@
         所在楼层 <text space="nbsp" class="color-text" style="background-color: #2c8bef;">  {{item.Floor}}↑ </text>
       </text>
       <text>
-        楼层繁忙度 <text space="nbsp" class="color-text" style="background-color: #EC3F14;">  忙  </text>
+        楼层繁忙度 <text space="nbsp" class="color-text" style="background-color: #EC3F14;"> {{item.FloorBusyness}} </text>
       </text>
       <text>
         综合评分 <text space="nbsp" class="color-text" style="background-color: #2c8bef;">  {{item.ComprehensiveScore}}  </text>

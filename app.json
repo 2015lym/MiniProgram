@@ -2,11 +2,9 @@
   "pages": [
     "pages/tabs/home/home",
     "pages/tabs/mine/mine",
-    "pages/phone-bind/phone-bind",
     "pages/feedback/feedback",
     "pages/about/about",
     "pages/elevator-detail/elevator-detail",
-    "pages/care-elevator/care-elevator",
     "pages/elevator-info/elevator-info",
     "pages/echarts-detail/error-number/error-number",
     "pages/echarts-detail/run-close-number/run-close-number",

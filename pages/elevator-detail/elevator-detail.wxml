@@ -24,7 +24,7 @@
     <text class="gray-text">\n维保信息</text>
   </view>
   <view class="info-subview">监督检查\n
-    <text class="gray-text">\n查看详情</text>
+    <text class="gray-text">\n暂未开放</text>
   </view>
 </view>
 
@@ -32,27 +32,27 @@
   <text class="view-title">运行里程\n<text class="gray-text">近7天运行总里程<text style="color: #2C8BEF"> {{elevatorData.OperatingMileage}}KM</text></text></text>
   <button class="more-button" style="color: #2c8bef" bindtap="runMileage">更多</button>
 </view>
-<echarts1 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts1>
+<echarts1 wx:if="{{elevatorData.IsEquipment}}" echartsData="{{elevatorData.NearlyDaysModels}}"></echarts1>
 
 <view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">运行次数\n<text class="gray-text">近7天运行总次数<text style="color: #57BE6C"> {{elevatorData.NumberOfRuns}}次</text></text></text>
   <button class="more-button" style="color: #57BE6C" bindtap="runNumber">更多</button>
 </view>
-<echarts2 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts2>
+<echarts2 wx:if="{{elevatorData.IsEquipment}}" echartsData="{{elevatorData.NearlyDaysModels}}"></echarts2>
 
 <view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">开关门次数\n<text class="gray-text">近7天开关门总次数<text style="color: #F3993E"> {{elevatorData.OpenDoorTimes}}次</text></text></text>
   <button class="more-button" style="color: #F3993E" bindtap="openCloseNumber">更多</button>
 </view>
-<echarts3 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts3>
+<echarts3 wx:if="{{elevatorData.IsEquipment}}" echartsData="{{elevatorData.NearlyDaysModels}}"></echarts3>
 
 <view class="echarts-title-view" wx:if="{{elevatorData.IsEquipment}}">
   <text class="view-title">故障次数\n<text class="gray-text">近7天故障总次数<text style="color: #2C8BEF"> {{elevatorData.NumberOfFailures}}次</text></text></text>
   <button class="more-button" style="color: #2C8BEF" bindtap="errorNumber">更多</button>
 </view>
-<echarts4 echartsData="{{elevatorData.NearlyDaysModels}}"></echarts4>
+<echarts4 wx:if="{{elevatorData.IsEquipment}}" echartsData="{{elevatorData.NearlyDaysModels}}"></echarts4>
 
-<view class="echarts-title-view">
+<!-- <view class="echarts-title-view">
   <text class="view-title">电梯综合评分</text>
   <button class="more-button" style="color: #2C8BEF" bindtap="moreScore">更多</button>
 </view>
@@ -84,7 +84,7 @@
   <view slot="footer" class="evaluate-footer">
     <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
   </view>
-</i-card>
+</i-card> -->
 
 <view class="blank-view"></view>
 

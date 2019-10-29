@@ -14,9 +14,10 @@ function initChart(canvas, width, height) {
     grid: {
       y: 15,
       y2: 25,
-      x: 35,
+      x: 40,
       x2: 20
     },
+    minInterval: 1,
     color: ["#34BFFF"],
     tooltip: {
       show: true,
@@ -75,7 +76,7 @@ Component({
       if (this.data.echartsData) {
         var array = [];
         for (var i = 0; i < this.data.echartsData.length; i++) {
-          array.push(this.data.echartsData[i].LockBrakeTimes)
+          array.push(this.data.echartsData[i].TotalRunFloors)
         }
         setTimeout(function () {
           chart.setOption({

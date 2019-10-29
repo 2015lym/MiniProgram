@@ -1,26 +1,27 @@
 <!--pages/elevator-info/elevator-info.wxml-->
 <view class="top-card">
   <i-icon type="other" size="20" />
-  <text space="nbsp" class="top-card-content">电梯编号  086410X\n</text>
+  <text space="nbsp" class="top-card-content">电梯编号  {{elevatorData.LiftNum}}\n</text>
   <i-icon type="coordinates_fill" size="20" />
-  <text space="nbsp" class="top-card-content">内部地址  林肯公园3号楼22号楼甲1\n</text>
-  <i-icon type="coordinates_fill" size="20" />
-  <text space="nbsp" class="top-card-content">所在小区  远洋和平府</text>
+  <text space="nbsp" class="top-card-content">内部地址  {{elevatorData.Address}}\n</text>
 </view>
 
 <text class="view-title">电梯信息</text>
 
 <view class="bottom-card">
-  <text class="bottom-card-content">电梯类型：老旧电梯
-  注册代码：312323232323232
-  制造单位：辽宁华盾制造公司
-  电梯品牌：剑牌
-  注册代码：1239034930
-  登记机关：辽宁电梯协会
-  使用单位：华盾测试电梯使用单位</text>
-  <text class="bottom-card-content">\n管理人员：刘动晓 </text>
-  <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
-  <text class="bottom-card-content">\n维保单位：上海世纪爱睡觉工程有限公司</text>
-  <text class="bottom-card-content">\n维保人员：章一 </text>
-  <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  <text class="bottom-card-content">电梯类型：{{elevatorData.LiftType}}
+  注册代码：{{elevatorData.CertificateNum}}
+  制造单位：{{elevatorData.MadeDepartment}}
+  电梯品牌：{{elevatorData.Brand}}
+  登记机关：{{elevatorData.RegisterDepartment}}
+  使用单位：{{elevatorData.UseDepartment}}</text>
+  <view wx:for="{{elevatorData.UseUsers}}" wx:for-item="item" wx:key="Mobile" data-item="{{item}}" bindtap="callPhone">
+    <text class="bottom-card-content">管理人员：{{item.UserName}} </text>
+    <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  </view>
+  <text class="bottom-card-content">维保单位：{{elevatorData.MaintenanceDepartment}}</text>
+  <view wx:for="{{elevatorData.MaintUsers}}" wx:for-item="item" wx:key="Mobile" data-item="{{item}}" bindtap="callPhone">
+    <text class="bottom-card-content">维保人员：{{item.UserName}} </text>
+    <i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  </view>
 </view>

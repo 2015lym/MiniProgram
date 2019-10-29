@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "维保信息详情",
   "usingComponents": {
+    "i-toast": "../../dist/toast/index",
     "i-icon": "../../dist/icon/index"
   }
 }

@@ -56,11 +56,11 @@
   <i-cell title="短信通知" class="cell-color">
     <i-switch value="{{isSendNote}}" bind:change="changeSendNote" slot="footer"></i-switch>
   </i-cell>
-  <i-input right title="接收短信手机号码" value="" placeholder="请输入" />
+  <i-input right title="接收短信手机号码" value="{{submitData.entity.elcPolicy.elcMobile}}" placeholder="请输入" bind:change="changeInvoiceMobile"/>
   <i-cell title="邮件通知" class="cell-color">
     <i-switch value="{{isSendEmail}}" bind:change="changeSendEmail" slot="footer"></i-switch>
   </i-cell>
-  <i-input right title="接收邮箱" value="" placeholder="请输入" />
+  <i-input right title="接收邮箱" value="{{submitData.entity.elcPolicy.elcEmail}}" placeholder="请输入" bind:change="changeInvoiceEmail"/>
 </i-panel>
 
 <i-button bind:click="submit" type="primary">提交保单</i-button>

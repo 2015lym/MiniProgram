@@ -5,67 +5,50 @@
     <text style="font-size: 16px">需要维保</text>
   </view>
   <view class="right-view">
-    <view class="top-card-content">电梯注册代码 31102107002012</view>
-    <view class="top-card-content">维保到期时间 2019-04-04 13</view>
-    <view class="top-card-content">上次维保时间 2019-04-04 13</view>
-    <view class="top-card-content">维保类型 季度维保</view>
+    <view class="top-card-content">电梯注册代码 {{listData.CertificateNum}}</view>
+    <view class="top-card-content">维保到期时间 {{listData.MaintenanceTime}}</view>
+    <view class="top-card-content">上次维保时间 {{listData.LastMaintenanceTime}}</view>
+    <view class="top-card-content">维保类型 {{listData.CType}}</view>
     <view>
       <i-icon type="coordinates_fill" size="20" />
-      <text class="top-card-content">泰然工贸园206栋3#货梯</text>
+      <text class="top-card-content">{{listData.Address}}</text>
     </view>
   </view>
 </view>
 
-<view class="contacts-view">
-  <text>刘荣涛 15041206187</text>
+<view wx:for="{{listData.MaintUsers}}" wx:for-item="item" wx:key="Mobile" data-item="{{item}}" bindtap="callPhone" class="contacts-view">
+  <text>{{item.UserName}} {{item.Mobile}}</text>
   <button class="contacts-button" size="small">联系他</button>
 </view>
 
-<view class="contacts-view">
-  <text>刘荣涛 15041206187</text>
-  <button class="contacts-button" size="small">联系他</button>
-</view>
-
-<view class="history-card">
+<view class="history-card" wx:if="{{historyData.length > 0}}">
   <view class="history-title">维保历史</view>
-  <view class="history-view">
-    <view class="left-view">
-      <image class="left-image" mode="widthFix" src="../../resource/images/need-maintain.png"></image>
+  <view wx:for="{{historyData}}" wx:for-item="item" wx:key="CreateTime">
+    <view class="history-view">
+      <view class="left-view">
+        <image class="left-image" mode="widthFix" src="../../resource/images/need-maintain.png"></image>
+      </view>
+      <view class="right-view">
+        <view class="top-card-content">维保日期：{{item.MaintenanceTime}}</view>
+        <view class="top-card-content">
+          <text space="nbsp" class="season-view">  {{item.CType}}  </text>
+        </view>
+        <!-- <view wx:for="{{item.MaintUsers}}" wx:for-item="user" wx:key="Mobile">
+          <i-icon type="addressbook_fill" size="20" />
+          <text class="top-card-content">{{user.UserName}}</text>
+        </view> -->
+        <view>
+          <i-icon type="addressbook_fill" size="20" />
+          <text class="top-card-content">{{item.MaintUsers[0].UserName}}</text>
+        </view>
+        <view>
+          <i-icon type="coordinates_fill" size="20" />
+          <text class="top-card-content">{{item.Address}}</text>
+        </view>
+      </view>
     </view>
-    <view class="right-view">
-      <view class="top-card-content">维保日期：2019-04-04 12:1</view>
-      <view class="top-card-content">
-        <text space="nbsp" class="season-view">  季度维保  </text>
-      </view>
-      <view>
-        <i-icon type="addressbook_fill" size="20" />
-        <text class="top-card-content">邓伦</text>
-      </view>
-      <view>
-        <i-icon type="coordinates_fill" size="20" />
-        <text class="top-card-content">泰然工贸园206栋3#货梯</text>
-      </view>
-    </view>
+    <!-- <view class="remark-view">倒计时快点结束快点结束快点电视剧快点结束倒计时快点结束快点结束快点电视剧快点结束倒计时快点结束快点结束快点电视剧快点结束</view> -->
   </view>
-  <view class="remark-view">倒计时快点结束快点结束快点电视剧快点结束倒计时快点结束快点结束快点电视剧快点结束倒计时快点结束快点结束快点电视剧快点结束</view>
-  <view class="history-view">
-    <view class="left-view">
-      <image class="left-image" mode="widthFix" src="../../resource/images/need-maintain.png"></image>
-    </view>
-    <view class="right-view">
-      <view class="top-card-content">维保日期：2019-04-04 12:1</view>
-      <view class="top-card-content">
-        <text space="nbsp" class="season-view">  季度维保  </text>
-      </view>
-      <view>
-        <i-icon type="addressbook_fill" size="20" />
-        <text class="top-card-content">邓伦</text>
-      </view>
-      <view>
-        <i-icon type="coordinates_fill" size="20" />
-        <text class="top-card-content">泰然工贸园206栋3#货梯</text>
-      </view>
-    </view>
-  </view>
-  <view class="remark-view">倒计时快点结束快点结束快点电视剧快点结束倒计时快点结束快点结束快点电视剧快点结束倒计时快点结束快点结束快点电视剧快点结束</view>
 </view>
+
+<i-toast id="toast" />

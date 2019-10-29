@@ -14,9 +14,10 @@ function initChart(canvas, width, height) {
     grid: {
       y: 15,
       y2: 25,
-      x: 35,
+      x: 40,
       x2: 20
     },
+    minInterval: 1,
     color: ["#F3993E"],
     tooltip: {
       show: true,
