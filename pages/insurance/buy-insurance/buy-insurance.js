@@ -54,8 +54,7 @@ Page({
       }
     ],
     // 发票类型
-    invoiceArray: [
-      {
+    invoiceArray: [{
         id: '0',
         name: '普票'
       },
@@ -67,7 +66,7 @@ Page({
     recognizeeInfo: [
 
     ],
-    
+
     submitData: {
       liftIds: [],
       userId: '',
@@ -75,43 +74,43 @@ Page({
       elevatorType: '', // 电梯类型
       invoiceType: '0', // 发票类型
       electronicInvoiceReceivingMailbox: '', // 电子发票接收邮箱(普票填写)
-      bankName: '',  //开户银行(专票填写)
-      bankAccount: '',  //银行账户(专票填写)
-      telephoneNumber: '',  //电话号码(专票填写)
-      unitAddress: '',  //单位地址(专票填写)
+      bankName: '', //开户银行(专票填写)
+      bankAccount: '', //银行账户(专票填写)
+      telephoneNumber: '', //电话号码(专票填写)
+      unitAddress: '', //单位地址(专票填写)
+      operatorCode: 'F12106',
+      proxyPointCode: '6IW',
       entity: {
         plcBase: {
-          plcPlanCode: 'P110749001900000004',  // 保险方案代码(必须输入)
-          plcStartDate: '',  // 保险起期(必须输入)
-          plcEndDate: '',  // 保险止期(必须输入)
-          plcPremium: '85',  // 保费(必须输入)
-          paymentWay: '5'  // 支付方式(必须输入)
+          plcPlanCode: 'P110749001900000004', // 保险方案代码(必须输入)
+          plcStartDate: '', // 保险起期(必须输入)
+          plcEndDate: '', // 保险止期(必须输入)
+          plcPremium: '85', // 保费(必须输入)
+          paymentWay: '5' // 支付方式(必须输入)
         },
         applicant: {
-          apltName: '',  //投保人名称(必须输入)
-          apltCretType: '5',  //投保人证件类型(必须输入)
-          apltCretCode: '',  // 投保人证件号码(必须输入)
-          apltTelephone: '',  //投保人固定电话(可选输入)
-          apltEmail: '',  //投保人email(可选输入)
-          apltMobile: '',  //投保人移动电话(可选输入)
-          isrdAddress: ''  //投保人地址信息(可选输入)
+          apltName: '', //投保人名称(必须输入)
+          apltCretType: '5', //投保人证件类型(必须输入)
+          apltCretCode: '', // 投保人证件号码(必须输入)
+          apltTelephone: '', //投保人固定电话(可选输入)
+          apltEmail: '', //投保人email(可选输入)
+          apltMobile: '', //投保人移动电话(可选输入)
+          isrdAddress: '' //投保人地址信息(可选输入)
         },
-        insuredList: [
-          {
-            isrdName: '',  //被保人名称(必须输入)
-            isrdCretType: '5',  //被保人证件类型(必须输入)
-            isrdCretCode: '',  //被保人证件号码(必须输入)
-            isrdTelephone: '',  //被保人固定电话(可选输入)
-            isrdEmail: '',  //被保人email(可选输入)
-            isrdMobile: '',  //被保人移动电话(可选输入)
-            isrdAddress: ''  //被保人地址信息(可选输入)
-          }
-        ],
+        insuredList: [{
+          isrdName: '', //被保人名称(必须输入)
+          isrdCretType: '5', //被保人证件类型(必须输入)
+          isrdCretCode: '', //被保人证件号码(必须输入)
+          isrdTelephone: '', //被保人固定电话(可选输入)
+          isrdEmail: '', //被保人email(可选输入)
+          isrdMobile: '', //被保人移动电话(可选输入)
+          isrdAddress: '' //被保人地址信息(可选输入)
+        }],
         elcPolicy: {
-          elcMsgFlag: '0',  //短信发送标志(必须输入)
-          elcMobile: '',  //短信接收手机号(可选输入)
-          elcEmlFlag: '0',  //邮件发送标志(必须输入)
-          elcEmail: ''  //电子保单接收邮箱(可选输入)
+          elcMsgFlag: '0', //短信发送标志(必须输入)
+          elcMobile: '', //短信接收手机号(可选输入)
+          elcEmlFlag: '0', //邮件发送标志(必须输入)
+          elcEmail: '' //电子保单接收邮箱(可选输入)
         }
       }
     }
@@ -153,18 +152,54 @@ Page({
   },
   // 选择时间
   selectStartTime: function(e) {
-    var oldDate = e.detail.data;
-    var newYear = Number(oldDate.split('-')[0]) + 1;
-    var newDate = oldDate.replace(oldDate.split('-')[0], newYear);
+    // 起期
     this.setData({
-      endTime: newDate
+      'submitData.entity.plcBase.plcStartDate': e.detail.data.replace(/-/g, '') + '0000'
     });
-    this.setData({
-      'submitData.entity.plcBase.plcStartDate': oldDate.replace(/-/g, '') + '0000'
-    });
+
+    Request.get('WeChatMiniApps/GetEndDate', {
+      dt: e.detail.data
+    }).then(res => {
+      if (res.data.Success == true) {
+        this.setEndTime(res.data.Data)
+      } else {
+        $Toast({
+          content: res.data.Message,
+          type: 'error'
+        });
+      }
+    }).catch(err => {});
+  },
+  setEndTime(endDate) {
+    // 止期
+    var newTimeStap = new Date(endDate).getTime();
+    var newDate = this.getTimeFromTimeStamp(newTimeStap);
+    console.log(newDate);
     this.setData({
       'submitData.entity.plcBase.plcEndDate': newDate.replace(/-/g, '') + '0000'
     })
+
+    // 止期显示（24:00）
+    var formatNewTimeStap = new Date(newTimeStap - 24 * 60 * 60 * 1000);
+    var formatNewDate = this.getTimeFromTimeStamp(formatNewTimeStap);
+    console.log(formatNewDate)
+    this.setData({
+      endTime: formatNewDate + ' 24:00'
+    })
+  },
+
+  getTimeFromTimeStamp(ntimeStamp) {
+    var date = new Date(ntimeStamp);
+    var yy = date.getFullYear(); //年
+    var mm = date.getMonth() + 1; //月
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+    var dd = date.getDate(); //日
+    if (dd < 10) {
+      dd = '0' + dd
+    }
+    return yy + '-' + mm + '-' + dd;
   },
   // 选择保险方案
   selectBxfa: function(e) {
@@ -211,7 +246,7 @@ Page({
     }
   },
   // 选择电梯类型
-  selectDtlx: function (e) {
+  selectDtlx: function(e) {
     if (e.detail.data == 0) {
       this.setData({
         'submitData.elevatorType': '1'
@@ -235,7 +270,7 @@ Page({
     }
   },
   // 选择发票类型
-  selectInvoice: function (e) {
+  selectInvoice: function(e) {
     if (e.detail.data == 0) {
       this.setData({
         'submitData.invoiceType.': '0'
@@ -260,14 +295,21 @@ Page({
   addRecognizee() {
     var that = this;
     var obj = {};
-    obj.Id = 1;
+    obj.Id = Date.parse(new Date()).toString();
     let array = this.data.recognizeeInfo;
     array.push(obj);
     this.setData({
       recognizeeInfo: array
     });
   },
-
+  deleteRecognizee(e) {
+    console.log(e)
+    var array = this.data.recognizeeInfo;
+    array.splice(e.currentTarget.dataset.index, 1);
+    this.setData({
+      recognizeeInfo: array
+    });
+  },
   changeSendNote(event) {
     const detail = event.detail;
     this.setData({
@@ -352,21 +394,30 @@ Page({
     })
   },
 
+  changeOperatorCode(e) {
+    this.setData({
+      'submitData.operatorCode': e.detail.detail.value.replace(/[^A-Z0-9]/g, '')
+    })
+  },
+  changeProxyPointCode(e) {
+    this.setData({
+      'submitData.proxyPointCode': e.detail.detail.value.replace(/[^A-Z0-9]/g, '')
+    })
+  },
+
   submit() {
     if (this.data.isEqualPeople == true) {
       var applicant = this.data.submitData.entity.applicant;
       this.setData({
-        'submitData.entity.insuredList': [
-          {
-            isrdName: applicant.apltName,
-            isrdCretType: '5',
-            isrdCretCode: applicant.apltCretCode,
-            isrdTelephone: applicant.apltTelephone,
-            isrdEmail: applicant.apltEmail,
-            isrdMobile: applicant.apltMobile,
-            isrdAddress: applicant.isrdAddress
-          }
-        ]
+        'submitData.entity.insuredList': [{
+          isrdName: applicant.apltName,
+          isrdCretType: '5',
+          isrdCretCode: applicant.apltCretCode,
+          isrdTelephone: applicant.apltTelephone,
+          isrdEmail: applicant.apltEmail,
+          isrdMobile: applicant.apltMobile,
+          isrdAddress: applicant.isrdAddress
+        }]
       });
     }
 
@@ -386,12 +437,12 @@ Page({
             type: 'error'
           });
         }
-      }).catch(err => { });
+      }).catch(err => {});
     }
   },
   back() {
     wx.navigateBack({
-      
+
     });
   },
   checkData() {
@@ -437,8 +488,7 @@ Page({
         return false;
       }
     } else {
-      if (
-        !this.data.submitData.bankName ||
+      if (!this.data.submitData.bankName ||
         !this.data.submitData.bankAccount ||
         !this.data.submitData.telephoneNumber ||
         !this.data.submitData.unitAddress)

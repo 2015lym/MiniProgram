@@ -1,66 +1,63 @@
 // pages/add-score/add-score.js
+
+const Request = require("../../utils/request.js");
+const { $Toast } = require('../../dist/base/index');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    liftId: '',
+    starIndex: 5,
+    feedbackText: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      liftId: options.liftId
+    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  onChange(e) {
+    const index = e.detail.index;
+    this.setData({
+      starIndex: index
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  bindinput: function (e) {
+    this.setData({
+      feedbackText: e.detail.value
+    });
   },
+  submit: function () {
+    if (this.data.feedbackText.length == 0) {
+      $Toast({
+        content: '请填写评价',
+        type: 'error'
+      });
+      return;
+    }
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+    Request.post('WeChatMiniApps/SaveLiftScore', {
+      liftId: this.data.liftId,
+      fraction: this.data.starIndex,
+      commentContent: this.data.feedbackText
+    }).then(res => {
+      if (res.data.Success == true) {
+        $Toast({
+          content: '提交成功',
+          type: 'success'
+        });
+        setTimeout(function () {
+          wx.navigateBack({
 
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+          });
+        }, 1500)
+      }
+    }).catch(err => { });
   }
 })

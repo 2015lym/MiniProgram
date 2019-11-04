@@ -27,7 +27,8 @@
 </i-panel>
 
 <view wx:if="{{!isEqualPeople}}">
-  <i-panel title="被保人信息" wx:for="{{recognizeeInfo}}" wx:key="Id">
+  <i-panel title="被保人信息" wx:for="{{recognizeeInfo}}" wx:key="{{Id}}" >
+    <i-button wx:if="{{index>0}}" data-index="{{index}}" bind:click="deleteRecognizee" type="error" >删除被保人</i-button>
     <i-input right title="被保人名称" value="{{submitData.entity.applicant.apltName}}"/>
     <i-input right title="被保人证件类型" value="营业执照" disabled/>
     <i-input right title="被保人证件号码" value="" placeholder="请输入" />
@@ -61,6 +62,11 @@
     <i-switch value="{{isSendEmail}}" bind:change="changeSendEmail" slot="footer"></i-switch>
   </i-cell>
   <i-input right title="接收邮箱" value="{{submitData.entity.elcPolicy.elcEmail}}" placeholder="请输入" bind:change="changeInvoiceEmail"/>
+</i-panel>
+
+<i-panel title="经办人信息">
+  <i-input right title="经办人代码" value="{{submitData.operatorCode}}" placeholder="请输入" bind:change="changeOperatorCode"/>
+  <i-input right title="代理点代码" value="{{submitData.proxyPointCode}}" placeholder="请输入" bind:change="changeProxyPointCode"/>
 </i-panel>
 
 <i-button bind:click="submit" type="primary">提交保单</i-button>

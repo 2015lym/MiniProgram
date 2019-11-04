@@ -125,6 +125,7 @@ Page({
   },
   // 绑定手机号
   getPhoneNumber(e) {
+    console.log(e.detail)
     if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
       $Toast({
         content: '未获取到手机号',

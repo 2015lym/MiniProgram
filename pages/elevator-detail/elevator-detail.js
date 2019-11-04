@@ -12,34 +12,43 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isSweepCode: false,
     liftNum: '',
     feedbackText: '',
     numberText: '0/100',
-    elevatorData: {}
+    elevatorData: {},
+    scoreList: []
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (options.q) {
       var url = decodeURIComponent(options.q);
       var index = url.indexOf("=") + 1;
       var num = decodeURI(url.slice(index))
       this.setData({
-        liftNum: num
+        liftNum: num,
+        isSweepCode: true
       })
     } else {
       this.setData({
-        liftNum: options.liftNum
+        liftNum: options.liftNum,
+        isSweepCode: false
       })
     }
-    
+
     if (!this.data.liftNum) {
       $Toast({
         content: '缺少电梯id',
         type: 'error'
       });
+      return;
     }
+  },
+
+  onShow: function() {
     Request.post('WeChatMiniApps/GetNearlyDays', {
-      liftNum: this.data.liftNum
+      liftNum: this.data.liftNum,
+      isSweepCode: this.data.isSweepCode
     }).then(res => {
       if (res.data.Success == true) {
         this.setData({
@@ -50,20 +59,28 @@ Page({
             'elevatorData.MaintenanceDays': 0
           });
         }
+        this.getScoreList(this.data.elevatorData.Id);
         this.createCavans();
       } else {
 
       }
     }).catch(err => {});
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function(e) {
+  getScoreList(liftId) {
+    Request.post('WeChatMiniApps/GetLiftScoreList', {
+      liftId: liftId
+    }).then(res => {
+      if (res.data.Success == true) {
+        this.setData({
+          scoreList: JSON.parse(res.data.Data)
+        });
+      } else {
 
+      }
+    }).catch(err => { });
   },
+
   // 创建cavans
   createCavans: function() {
     var cxt_arc = wx.createCanvasContext('firstCanvas'); //创建并返回绘图上下文context对象。
@@ -74,10 +91,19 @@ Page({
     cxt_arc.arc(75, 115, 69, 0, 2 * Math.PI, false); //设置一个原点(106,106)，半径为100的圆的路径到当前路径
     cxt_arc.stroke();
     cxt_arc.setLineWidth(6);
-    cxt_arc.setStrokeStyle('#3ea6ff');
+    var score = this.data.elevatorData.ComprehensiveScore;
+    if (score >= 85) {
+      cxt_arc.setStrokeStyle('#19be6b');
+    } else if (score >= 70) {
+      cxt_arc.setStrokeStyle('#2c8bef');
+    } else if (score >= 60) {
+      cxt_arc.setStrokeStyle('#f90');
+    } else {
+      cxt_arc.setStrokeStyle('#EC3F14');
+    }
     cxt_arc.setLineCap('round')
     cxt_arc.beginPath(); //开始一个新的路径
-    cxt_arc.arc(75, 115, 69, - Math.PI / 2, (this.data.elevatorData.ComprehensiveScore) / 50 * Math.PI - Math.PI / 2, false);
+    cxt_arc.arc(75, 115, 69, -Math.PI / 2, score / 50 * Math.PI - Math.PI / 2, false);
     cxt_arc.stroke(); //对当前路径进行描边
     cxt_arc.draw();
   },
@@ -119,9 +145,9 @@ Page({
   },
   // 新增评分
   addScore: function() {
-    // wx.navigateTo({
-    //   url: '../add-score/add-score'
-    // })
+    wx.navigateTo({
+      url: '../add-score/add-score?liftId=' + this.data.elevatorData.Id
+    })
   },
   // 电梯信息
   elevatorInfo: function() {
@@ -157,21 +183,14 @@ Page({
   // 更多评分
   moreScore: function() {
     wx.navigateTo({
-      url: '../more-score/more-score'
+      url: '../more-score/more-score?data=' + JSON.stringify(this.data.scoreList)
     })
   },
   // 查看保险
   checkInsurance: function() {
-    if (this.data.elevatorData.IsPurchaseAuthority) {
-      wx.navigateTo({
-        url: '../insurance/insurance?liftId=' + this.data.elevatorData.Id
-      })
-    } else {
-      $Toast({
-        content: '无权限',
-        type: 'error'
-      });
-    }
+    wx.navigateTo({
+      url: '../insurance/insurance?data=' + JSON.stringify(this.data.elevatorData)
+    })
   },
   // 查看维保
   checkMaintain: function() {

@@ -1,0 +1,7 @@
+/* pages/see-history/see-history.wxss */
+
+@import "../tabs/home/home.wxss";
+
+.top-view {
+  height: 30px;
+}

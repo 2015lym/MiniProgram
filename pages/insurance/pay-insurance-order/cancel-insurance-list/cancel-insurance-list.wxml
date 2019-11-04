@@ -1,5 +1,4 @@
-<!--pages/insurance/insurance.wxml-->
-
+<!--pages/insurance/pay-insurance-order/cancel-insurance-list/cancel-insurance-list.wxml-->
 
 <i-panel title="电梯信息">
   <i-input right value="{{ listData.LiftNum }}" title="电梯编号" disabled/>
@@ -13,7 +12,6 @@
   <i-input right value="{{ listData.InsuranceEndTime }}" title="保险止期" disabled/>
 </i-panel>
 
-<i-button wx:if="{{elevatorData.IsPurchaseAuthority}}" bind:click="buyInsurance" type="primary">购买本电梯保险</i-button>
-<i-button wx:if="{{elevatorData.IsPurchaseAuthority}}" bind:click="bulkBuyInsurance">批量购买</i-button>
+<i-button bind:click="cancelInsurance" type="primary">退保</i-button>
 
 <i-toast id="toast" />

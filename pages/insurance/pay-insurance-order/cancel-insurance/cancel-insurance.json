@@ -1,7 +1,6 @@
 {
-  "navigationBarTitleText": "意见反馈",
+  "navigationBarTitleText": "退保",
   "usingComponents": {
-    "i-input": "/dist/input/index",
     "i-button": "/dist/button/index",
     "i-toast": "/dist/toast/index"
   }

@@ -1,4 +1,5 @@
-/* pages/add-score/add-score.wxss */
+/* pages/insurance/pay-insurance-order/cancel-insurance/cancel-insurance.wxss */
+
 
 .back-view {
   background-color: white;
@@ -6,12 +7,6 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
-
-.title-view {
-  width: 100%;
-  font-size: 19px;
-  padding: 16px;
 }
 
 .feedback-area {

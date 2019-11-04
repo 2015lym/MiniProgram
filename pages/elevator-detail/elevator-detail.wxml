@@ -3,9 +3,9 @@
 <!-- canvas.wxml -->
 
 <view class="top-view">
-  <i-button wx:if="{{elevatorData.IsFollow == true}}" bind:click="handleClick" type="success" size="small" bindtap="careElevator">已关注</i-button>
-  <i-button wx:if="{{elevatorData.IsFollow == false}}" bind:click="handleClick" type="success" size="small" bindtap="careElevator">关注电梯</i-button>
-  <i-button bind:click="handleClick" type="warning" size="small" bindtap="elevatorInfo">电梯信息</i-button>
+  <i-button wx:if="{{elevatorData.IsFollow == true}}" bind:click="careElevator" type="success" size="small">已关注</i-button>
+  <i-button wx:if="{{elevatorData.IsFollow == false}}" bind:click="careElevator" type="success" size="small">关注电梯</i-button>
+  <i-button bind:click="elevatorInfo" type="warning" size="small">电梯信息</i-button>
 </view>
 
 <canvas class="cycle-view" canvas-id="firstCanvas">
@@ -52,39 +52,20 @@
 </view>
 <echarts4 wx:if="{{elevatorData.IsEquipment}}" echartsData="{{elevatorData.NearlyDaysModels}}"></echarts4>
 
-<!-- <view class="echarts-title-view">
+<view wx:if="{{scoreList.length>0}}" class="echarts-title-view">
   <text class="view-title">电梯综合评分</text>
   <button class="more-button" style="color: #2C8BEF" bindtap="moreScore">更多</button>
 </view>
-<i-card>
+<i-card wx:for="{{scoreList}}" wx:for-item="item" wx:key="Id" wx:if="{{index<3}}">
   <view slot="content" class="evaluate-top">
-    <text>刘东晓</text>
-    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
+    <text>{{item.NickName}}</text>
+    <view class="gray-text" style="margin-right: 0px">{{item.CreateTime}}</view>
   </view>
   <view slot="footer" class="evaluate-footer">
-    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
+    <i-rate value="{{item.Fraction}}"></i-rate><text style="color: #FF9F00"> {{item.Fraction}}星</text>
   </view>
 </i-card>
 
-<i-card>
-  <view slot="content" class="evaluate-top">
-    <text>刘东晓</text>
-    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
-  </view>
-  <view slot="footer" class="evaluate-footer">
-    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
-  </view>
-</i-card>
-
-<i-card>
-  <view slot="content" class="evaluate-top">
-    <text>刘东晓</text>
-    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
-  </view>
-  <view slot="footer" class="evaluate-footer">
-    <i-rate value="4"></i-rate><text style="color: #FF9F00"> 4星</text>
-  </view>
-</i-card> -->
 
 <view class="blank-view"></view>
 

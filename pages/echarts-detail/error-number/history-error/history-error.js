@@ -39,5 +39,11 @@ Page({
 
       }
     }).catch(err => { });
+  },
+
+  callPhone: function (event) {
+    wx.makePhoneCall({
+      phoneNumber: event.currentTarget.dataset.item.Mobile
+    })
   }
 })

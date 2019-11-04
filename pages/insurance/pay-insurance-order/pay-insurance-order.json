@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "待支付订单",
   "usingComponents": {
-    "i-toast": "../../dist/toast/index",
-    "i-button": "../../dist/button/index"
+    "i-toast": "/dist/toast/index",
+    "i-button": "/dist/button/index"
   }
 }

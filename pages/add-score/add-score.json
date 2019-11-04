@@ -1,6 +1,8 @@
 {
   "navigationBarTitleText": "写评论",
   "usingComponents": {
-    "i-rate": "../../dist/rate/index"
+    "i-rate": "/dist/rate/index",
+    "i-button": "/dist/button/index",
+    "i-toast": "/dist/toast/index"
   }
 }

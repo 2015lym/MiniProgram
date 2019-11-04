@@ -13,12 +13,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    elevatorData: {},
     liftId: '',
     listData: {}
   },
   onLoad: function(options) {
     this.setData({
-      liftId: options.liftId
+      elevatorData: JSON.parse(options.data),
+      liftId: JSON.parse(options.data).Id
     })
   },
   onShow: function() {

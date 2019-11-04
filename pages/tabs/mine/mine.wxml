@@ -13,15 +13,15 @@
   <i-cell title="电梯保险订单" is-link url="/pages/insurance/insurance-order/insurance-order">
     <i-icon slot="icon" type="commodity" size="28" color="#80848f" />
   </i-cell>
-  <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">
+    <i-cell title="电梯浏览历史" is-link url="/pages/see-history/see-history">
     <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
   </i-cell>
-  <!-- <i-cell title="分享" is-link url="/pages/rescue/rescue-info/rescue-info">
-    <i-icon slot="icon" type="share" size="28" color="#80848f" />
+  <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">
+    <i-icon slot="icon" type="message" size="28" color="#80848f" />
   </i-cell>
   <i-cell title="关于" is-link url="/pages/about/about">
     <i-icon slot="icon" type="prompt" size="28" color="#80848f" />
-  </i-cell> -->
+  </i-cell>
 </i-cell-group>
 
 <i-toast id="toast" />

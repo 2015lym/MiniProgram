@@ -47,7 +47,7 @@ Component({
       if (this.data.mode == 'date') {
         this.setData({
           value: e.detail.value,
-          displayValue: e.detail.value
+          displayValue: e.detail.value + ' 00:00'
         });
         this.triggerEvent('selectEvent', { data: e.detail.value });
       } else {

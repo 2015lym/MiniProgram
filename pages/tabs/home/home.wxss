@@ -27,6 +27,7 @@
 
 .list-footer-view {
   width: 50%;
+  margin-left:16px;
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -34,4 +35,24 @@
 .color-text {
   color: white;
   border-radius: 12px;
+}
+
+.blue-text {
+  background-color: #2c8bef;
+}
+
+.red-text {
+  background-color: #EC3F14;
+}
+
+.green-text {
+  background-color: #19be6b;
+}
+
+.orange-text {
+  background-color: #f90;
+}
+
+.margin-top-class {
+  margin-top: 15px;
 }

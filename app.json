@@ -20,7 +20,10 @@
     "pages/insurance/bulk-buy-insurance/bulk-buy-insurance",
     "pages/insurance/insurance-order/insurance-order",
     "pages/insurance/pay-insurance-order/pay-insurance-order",
-    "pages/insurance/insurance-pay/insurance-pay"
+    "pages/insurance/insurance-pay/insurance-pay",
+    "pages/insurance/pay-insurance-order/cancel-insurance-list/cancel-insurance-list",
+    "pages/insurance/pay-insurance-order/cancel-insurance/cancel-insurance",
+    "pages/see-history/see-history"
   ],
   "tabBar": {
     "selectedColor": "#2C8BEF",

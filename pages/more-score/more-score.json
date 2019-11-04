@@ -1,7 +1,7 @@
 {
   "navigationBarTitleText": "评分列表",
   "usingComponents": {
-    "i-card": "../../dist/card/index",
-    "i-rate": "../../dist/rate/index"
+    "i-card": "/dist/card/index",
+    "i-rate": "/dist/rate/index"
   }
 }

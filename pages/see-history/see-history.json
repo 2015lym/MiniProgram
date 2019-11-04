@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "首页",
+  "navigationBarTitleText": "浏览历史",
   "usingComponents": {
     "i-card": "/dist/card/index",
     "i-icon": "/dist/icon/index"

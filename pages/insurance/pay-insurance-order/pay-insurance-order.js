@@ -12,23 +12,38 @@ Page({
    * 页面的初始数据
    */
   data: {
+    groupId: '',
     listData: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (options.data) {
-      this.listData = JSON.parse(options.data)
+      this.setData({
+        listData: JSON.parse(options.data)
+      });
     } else {
+      this.setData({
+        groupId: options.groupId
+      });
+      
+    }
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function() {
+    if (this.data.groupId) {
       Request.post('WeChatMiniApps/GetInsuranceOrderLists', {
-        GroupId: options.groupId
+        groupId: this.data.groupId
       }).then(res => {
         if (res.data.Success == true) {
           var rtnData = JSON.parse(res.data.Data);
           var newArray = [];
-          for (var i = 0; i < rtnData.length; i ++) {
+          for (var i = 0; i < rtnData.length; i++) {
             var item = rtnData[i];
             item.index = i;
             newArray.push(item);
@@ -42,25 +57,10 @@ Page({
       }).catch(err => { });
     }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
   // 支付
-  payOrder: function (event) {
-    console.log(event)
+  payOrder: function(event) {
     Request.get('WeChatMiniApps/GetInsuranceOrders', {
-      policyNumber: event.currentTarget.dataset.item.PolicyNumber
+      insuranceNumber: event.currentTarget.dataset.item.InsuranceNumber
     }).then(res => {
       if (res.data.Success == true) {
         if (res.data.Code == 2) {
@@ -83,6 +83,8 @@ Page({
                 item.OrderStatus = 2;
               } else if (res.data.Code == 4) {
                 item.OrderStatus = 3;
+              } else if (res.data.Code == 5) {
+                item.OrderStatus = 4;
               }
             }
             newArray.push(item);
@@ -92,10 +94,19 @@ Page({
           });
         }
       } else {
-
+        $Toast({
+          content: res.data.Message,
+          type: 'error'
+        });
       }
-    }).catch(err => { });
+    }).catch(err => {});
 
 
+  },
+
+  cancelInsurance(event) {
+    wx.navigateTo({
+      url: './cancel-insurance-list/cancel-insurance-list?data=' + JSON.stringify(event.currentTarget.dataset.item),
+    })
   }
 })

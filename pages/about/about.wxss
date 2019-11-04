@@ -1,1 +1,27 @@
 /* pages/about/about.wxss */
+
+page {
+  background-color: white;
+}
+
+.back-view {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.sub-view {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin-right: 16px;
+}

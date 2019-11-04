@@ -1,11 +1,11 @@
 <!--pages/add-score/add-score.wxml-->
 
-<!-- <i-card>
-  <view slot="content" class="evaluate-top">
-    <text>刘东晓</text>
-    <view class="gray-text" style="margin-right: 0px">2019.12.12 12:12:12</view>
-  </view>
-  <view slot="footer" class="evaluate-footer">
-    <i-rate value="3"></i-rate><text style="color: #FF9F00"> 3星</text>
-  </view>
-</i-card> -->
+<view class="back-view">
+  <view class="title-view">请给电梯打分</view>
+  <i-rate size="30" value="{{starIndex}}" bind:change="onChange"></i-rate><text style="color: #FF9F00"> {{starIndex}}星</text>
+    <textarea class="feedback-area" value="{{feedbackText}}" placeholder="请给电梯做个点评吧！" maxlength="100" bindinput="bindinput"></textarea>
+</view>
+
+<i-button bind:click="submit" type="primary" >发表</i-button>
+
+<i-toast id="toast" />
