@@ -33,10 +33,6 @@ Page({
   },
 
   submit: function() {
-wx.showModal({
-  title: 'aaa',
-  content: 'bbb',
-})
     if (this.data.feedbackText.length == 0) {
       $Toast({
         content: '请填写意见反馈',
