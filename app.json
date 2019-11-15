@@ -23,7 +23,8 @@
     "pages/insurance/insurance-pay/insurance-pay",
     "pages/insurance/pay-insurance-order/cancel-insurance-list/cancel-insurance-list",
     "pages/insurance/pay-insurance-order/cancel-insurance/cancel-insurance",
-    "pages/see-history/see-history"
+    "pages/see-history/see-history",
+    "pages/video/video"
   ],
   "tabBar": {
     "selectedColor": "#2C8BEF",
@@ -48,6 +49,9 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "backgroundColor": "#FEFEFE"
+  },
+  "networkTimeout": {
+    "connectSocket": 10000
   },
   "sitemapLocation": "sitemap.json"
 }

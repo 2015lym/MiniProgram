@@ -4,6 +4,11 @@ const Request = require("./utils/request.js");
 App({
   userInfo: null,
   baseUrl: 'https://www2.dianti119.com/api/',
+  globalData: {
+    channelInfo: {},
+    imInfo: {}, // 会话配置信息
+  },
+
   onLaunch: function() {
     // 登录
     wx.login({
@@ -29,6 +34,12 @@ App({
 
       }
     })
+
+    let systemInfo = wx.getSystemInfoSync()
+    this.globalData.videoContainerSize = {
+      width: systemInfo.windowWidth,
+      height: systemInfo.windowHeight - 80
+    }
 
   },
 

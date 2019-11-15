@@ -14,6 +14,7 @@
     <i-icon slot="icon" type="commodity" size="28" color="#80848f" />
   </i-cell>
     <i-cell title="电梯浏览历史" is-link url="/pages/see-history/see-history">
+    <!-- <i-cell title="电梯浏览历史" is-link url="/pages/video/video"> -->
     <i-icon slot="icon" type="createtask" size="28" color="#80848f" />
   </i-cell>
   <i-cell title="意见反馈" is-link url="/pages/feedback/feedback">

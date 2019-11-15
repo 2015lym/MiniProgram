@@ -39,13 +39,32 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
-		"miniprogram": {
+		"gamePlugin": {
 			"current": -1,
 			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/video/video",
+					"pathName": "pages/video/video",
+					"query": "wyAccount=dty&roomId=60bc68dd-60e8-4c8d-a021-66399f8819cf",
+					"scene": 1043,
+					"referrerInfo": {
+						"appId": "wxf8b991039dd71f5a"
+					}
+				}
+			]
 		}
 	}
 }
