@@ -1,5 +1,11 @@
 /* pages/home.wxss */
 
+page {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
 .swiper-banner {
   width: 100%;
 }
@@ -27,7 +33,7 @@
 
 .list-footer-view {
   width: 50%;
-  margin-left:16px;
+  margin-left: 16px;
   margin-top: 16px;
   margin-bottom: 16px;
 }
@@ -42,7 +48,7 @@
 }
 
 .red-text {
-  background-color: #EC3F14;
+  background-color: #ec3f14;
 }
 
 .green-text {

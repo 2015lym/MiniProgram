@@ -74,10 +74,10 @@ Page({
       elevatorType: '', // 电梯类型
       invoiceType: '0', // 发票类型
       electronicInvoiceReceivingMailbox: '', // 电子发票接收邮箱(普票填写)
-      bankName: '', //开户银行(专票填写)
-      bankAccount: '', //银行账户(专票填写)
-      telephoneNumber: '', //电话号码(专票填写)
-      unitAddress: '', //单位地址(专票填写)
+      bankName: '中国农业银行股份有限公司沈阳沈河支行', //开户银行(专票填写)
+      bankAccount: '145001040014726', //银行账户(专票填写)
+      telephoneNumber: '024-22728801', //电话号码(专票填写)
+      unitAddress: '沈阳市沈河区小西路87号', //单位地址(专票填写)
       operatorCode: 'F12106',
       proxyPointCode: '6IW',
       entity: {
@@ -89,13 +89,13 @@ Page({
           paymentWay: '5' // 支付方式(必须输入)
         },
         applicant: {
-          apltName: '', //投保人名称(必须输入)
+          apltName: '中国太平洋财产保险股份有限公司辽宁分公司', //投保人名称(必须输入)
           apltCretType: '5', //投保人证件类型(必须输入)
-          apltCretCode: '', // 投保人证件号码(必须输入)
+          apltCretCode: '912101007346539839', // 投保人证件号码(必须输入)
           apltTelephone: '', //投保人固定电话(可选输入)
-          apltEmail: '', //投保人email(可选输入)
-          apltMobile: '', //投保人移动电话(可选输入)
-          isrdAddress: '' //投保人地址信息(可选输入)
+          apltEmail: '63109109@qq.com', //投保人email(可选输入)
+          apltMobile: '15640221130', //投保人移动电话(可选输入)
+          isrdAddress: '沈阳市沈河区小西路87号' //投保人地址信息(可选输入)
         },
         insuredList: [{
           isrdName: '', //被保人名称(必须输入)
@@ -108,9 +108,9 @@ Page({
         }],
         elcPolicy: {
           elcMsgFlag: '0', //短信发送标志(必须输入)
-          elcMobile: '', //短信接收手机号(可选输入)
+          elcMobile: '15640221130', //短信接收手机号(可选输入)
           elcEmlFlag: '0', //邮件发送标志(必须输入)
-          elcEmail: '' //电子保单接收邮箱(可选输入)
+          elcEmail: '63109109@qq.com' //电子保单接收邮箱(可选输入)
         }
       }
     }
@@ -491,12 +491,13 @@ Page({
       if (!this.data.submitData.bankName ||
         !this.data.submitData.bankAccount ||
         !this.data.submitData.telephoneNumber ||
-        !this.data.submitData.unitAddress)
+        !this.data.submitData.unitAddress) {
         $Toast({
           content: '请填写完整',
           type: 'error'
         });
-      return false;
+        return false;
+      }
     }
     return true;
   },

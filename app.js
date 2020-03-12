@@ -1,9 +1,11 @@
 //app.js
 const Request = require("./utils/request.js");
+import NIM from './vendors/NIM_Web_NIM_weixin_v6.10.0.js'
 
 App({
   userInfo: null,
   baseUrl: 'https://www2.dianti119.com/api/',
+  nim: null,
   globalData: {
     channelInfo: {},
     imInfo: {}, // 会话配置信息

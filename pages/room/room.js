@@ -1,3 +1,4 @@
+import NIM from '../../vendors/NIM_Web_NIM_weixin_v6.10.0.js'
 import Netcall from '../../vendors/NIM_Web_Netcall_weixin_v6.10.0.js'
 
 import { calculatePosition } from '../../utils/util.js'
@@ -29,17 +30,18 @@ Page({
       role: app.globalData.imInfo.role == 0 ? 'host' : 'audience',
     })
     console.log(app.globalData.imInfo)
+
+    NIM.use(Netcall)
+
     let netcall = Netcall.getInstance({ 
-      debug: true,
-      appkey: '6f44f64cfd07c9cf71883fe2e923cbdb',
-      account: app.globalData.imInfo.accid,
-      token: '123456'
+      nim: app.nim,
+      debug: true
     })
     netcall.destroy()
     netcall.joinChannel({
       channelName: app.globalData.imInfo.channelName,
       scene: 1, // 0:双人、1:多人
-      accid: app.globalData.imInfo.accid,
+      // accid: app.globalData.imInfo.accid,
       mode: 0,
       role: app.globalData.imInfo.role
     })
@@ -47,6 +49,14 @@ Page({
       self.setData({
         channelInfo: data
       })
+    }).catch((error) => {
+      wx.showToast({
+        title: '房间不存在',
+        icon: 'none'
+      })
+      setTimeout(() => {
+        wx.navigateBack(1)
+      }, 2000)
     })
     this.netcallInstance = netcall
     // 绑定netcall回调事件
@@ -72,7 +82,7 @@ Page({
         })
         setTimeout(() => {
           wx.navigateBack(1)
-        }, 3000)
+        }, 2000)
         return
       }
       let templist = data.userlist
@@ -141,6 +151,13 @@ Page({
     this.netcallInstance.on('liveRoomClose', (data) => {
       console.log('互动直播房间解散了')
       console.log(data)
+      wx.showToast({
+        title: '房间不存在',
+        icon: 'none'
+      })
+      setTimeout(() => {
+        wx.navigateBack(1)
+      }, 2000)
     })
   },
   _personJoin(data) {

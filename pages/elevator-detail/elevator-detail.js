@@ -183,7 +183,7 @@ Page({
   // 更多评分
   moreScore: function() {
     wx.navigateTo({
-      url: '../more-score/more-score?data=' + JSON.stringify(this.data.scoreList)
+      url: '../more-score/more-score?data=' + JSON.stringify(this.data.scoreList) + '&liftId=' + this.data.elevatorData.Id
     })
   },
   // 查看保险

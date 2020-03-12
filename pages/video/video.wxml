@@ -1,2 +1,3 @@
 <!--pages/video/video.wxml-->
-<text>正在接入视频，请稍后...</text>
+<text wx:if="{{isConnect == false}}">正在接入视频，请稍后...</text>
+<text wx:if="{{isConnect == true}}">连接完成。如需返回首页，请点击左上角。</text>

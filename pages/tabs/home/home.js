@@ -51,6 +51,24 @@ Page({
     }).catch(err => {});
   },
 
+  onPullDownRefresh() {
+    Request.post('WeChatMiniApps/GetFollowLift', {
+      PageIndex: 1,
+      PageSize: 10
+    }).then(res => {
+      this.setData({
+        listData: JSON.parse(res.data.Data)
+      });
+      wx.stopPullDownRefresh()
+    }).catch(err => { });
+  },
+
+  onReachBottom() {
+    // wx.showToast({
+    //   title: 'sss',
+    // })
+  },
+
   gotoDetail: function(event) {
     wx.navigateTo({
       url: '../../elevator-detail/elevator-detail?liftNum=' + event.currentTarget.dataset.item.LiftNum
