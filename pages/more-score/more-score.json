@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "评分列表",
-  "enablePullDownRefresh": true,
-  "backgroundTextStyle": "dark",
-  "usingComponents": {
-    "i-card": "/dist/card/index",
-    "i-rate": "/dist/rate/index"
-  }
-}

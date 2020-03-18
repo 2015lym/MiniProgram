@@ -4,11 +4,11 @@
     <image class="userinfo-avatar" src="../../resource/images/hddty.png" mode="cover"></image>
     <text>华盾电梯云</text>
   </view>
-  <text>
+  <!-- <text>
     项目经理：张宜新\n
     产品经理：傅鑫\n
     UI：杜娇\n
     开发：周立强、李一鸣\n
     测试：史云昊
-  </text>
+  </text> -->
 </view>

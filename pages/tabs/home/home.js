@@ -10,24 +10,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    baseUrl: '',
-    bnrUrl: [],
-    listData: []
+    selectIndex: 0,
+    order: {
+      peopleNum: 1
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.setData({
-      baseUrl: app.baseUrl.replace('api/', '')
-    })
-    Request.get('WeChatMiniApps/GetBanners', {
-    }).then(res => {
-      this.setData({
-        bnrUrl: JSON.parse(res.data.Data)
-      });
-    }).catch(err => { });
+    // Request.post('WeChatMiniApps/GetFollowLift', {
+    //   PageIndex: 1,
+    //   PageSize: 10
+    // }).then(res => {
+    //   this.setData({
+    //     listData: JSON.parse(res.data.Data)
+    //   });
+    //   wx.stopPullDownRefresh()
+    // }).catch(err => { });
   },
 
   /**
@@ -41,37 +42,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    Request.post('WeChatMiniApps/GetFollowLift', {
-      PageIndex: 1,
-      PageSize: 10
-    }).then(res => {
-      this.setData({
-        listData: JSON.parse(res.data.Data)
-      });
-    }).catch(err => {});
-  },
 
-  onPullDownRefresh() {
-    Request.post('WeChatMiniApps/GetFollowLift', {
-      PageIndex: 1,
-      PageSize: 10
-    }).then(res => {
-      this.setData({
-        listData: JSON.parse(res.data.Data)
-      });
-      wx.stopPullDownRefresh()
-    }).catch(err => { });
   },
-
-  onReachBottom() {
-    // wx.showToast({
-    //   title: 'sss',
-    // })
-  },
-
-  gotoDetail: function(event) {
-    wx.navigateTo({
-      url: '../../elevator-detail/elevator-detail?liftNum=' + event.currentTarget.dataset.item.LiftNum
+  selectBtn: function (event) {
+    this.setData({
+      selectIndex: event.currentTarget.dataset.value
     })
   }
 })

@@ -34,3 +34,6 @@ button::after {
 .cell-group {
   margin-top: 15px;
 }
+.taba {
+  width:100%;height:64px;
+}

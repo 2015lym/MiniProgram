@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "开关门次数详情",
-  "usingComponents": {
-    "echarts3": "../elevator-detail/echarts3/echarts3"
-  }
-}

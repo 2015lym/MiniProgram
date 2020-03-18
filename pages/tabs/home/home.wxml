@@ -1,42 +1,40 @@
 <!--pages/home.wxml-->
-<swiper wx:if="{{bnrUrl.length > 0}}" class="swiper-banner" indicator-dots="true" autoplay="true" interval="3000" duration="1000" circular="true">
-  <block wx:for="{{bnrUrl}}" wx:key="id">
-    <swiper-item>
-      <image src="{{baseUrl + item.ImgUrl}}" class="swiper-banner-img" mode="aspectFill"></image>
-    </swiper-item>
-  </block>
-</swiper>
-<view class="care-text">我关注的电梯</view>
 
-<i-card wx:for="{{listData}}" wx:for-item="item" wx:key="Id" data-item="{{item}}" bindtap="gotoDetail">
-  <view slot="content">
-    <view class="list-content-view">
-      <text>
-        所在楼层 <text space="nbsp" class="color-text blue-text">  {{item.Floor}}↑ </text>
-      </text>
-      <text>
-        楼层繁忙度 <text wx:if="{{item.FloorBusyness == '繁忙'}}" space="nbsp" class="color-text red-text"> 繁忙 </text>
-      <text wx:if="{{item.FloorBusyness == '一般'}}" space="nbsp" class="color-text blue-text"> 一般 </text>
-      <text wx:if="{{item.FloorBusyness == '空闲'}}" space="nbsp" class="color-text green-text"> 空闲 </text>
-      </text>
-      <text>
-        综合评分 <text wx:if="{{item.ComprehensiveScore >= 85}}" space="nbsp" class="color-text green-text">  {{item.ComprehensiveScore}}  </text>
-      <text wx:elif="{{item.ComprehensiveScore >= 70}}" space="nbsp" class="color-text blue-text">  {{item.ComprehensiveScore}}  </text>
-      <text wx:elif="{{item.ComprehensiveScore >= 60}}" space="nbsp" class="color-text orange-text">  {{item.ComprehensiveScore}}  </text>
-      <text wx:elif="{{item.ComprehensiveScore < 60}}" space="nbsp" class="color-text red-text">  {{item.ComprehensiveScore}}  </text>
-      </text>
-    </view>
-    <view class="margin-top-class">
-      <i-icon type="coordinates_fill" size="20" />
-      <text> {{item.InstallationAddress}}</text>
-    </view>
+<view class="top-view">
+  <view wx:if="{{selectIndex != 0}}" class="button-view" bindtap="selectBtn" data-value="0">报警电梯</view>
+  <view wx:if="{{selectIndex == 0}}" class="button-select-view" bindtap="selectBtn" data-value="0">报警电梯</view>
+
+  <view wx:if="{{selectIndex != 1}}" class="button-view" bindtap="selectBtn" data-value="1">救援列表</view>
+  <view wx:if="{{selectIndex == 1}}" class="button-select-view" bindtap="selectBtn" data-value="1">救援列表</view>
+
+  <view wx:if="{{selectIndex != 2}}" class="button-view" bindtap="selectBtn" data-value="2">人工下单</view>
+  <view wx:if="{{selectIndex == 2}}" class="button-select-view" bindtap="selectBtn" data-value="2">人工下单</view>
+
+  <view wx:if="{{selectIndex != 3}}" class="button-view" bindtap="selectBtn" data-value="3">处置记录</view>
+  <view wx:if="{{selectIndex == 3}}" class="button-select-view" bindtap="selectBtn" data-value="3">处置记录</view>
+</view>
+
+<map wx:if="{{selectIndex == 0}}" longitude="123.405261" latitude="41.745071" scale="14" class="map-view">
+  <view class="map-button-view">
+    <i-button bind:click="careElevator" type="success" size="small">刷新</i-button>
   </view>
-  <view slot="footer" class="list-footer">
-    <view class="list-footer-view">
-      <text>距离上次维保时间(天):{{item.MaintenanceDays}}\n\n故障(次):{{item.RescueTimes}}</text>
-    </view>
-    <view class="list-footer-view">
-      <text>救援(次):{{item.NumberOfFailures}}\n\n不文明次数(次):{{item.NumberOfUncivilizedTimes}}</text>
-    </view>
-  </view>
-</i-card>
+</map>
+
+<view wx:if="{{selectIndex == 1}}" class="map-view">
+
+</view>
+
+<view wx:if="{{selectIndex == 2}}" class="map-view">
+
+</view>
+
+<scroll-view wx:if="{{selectIndex == 3}}" class="map-view" scroll-y>
+  <i-panel title="人工下单">
+    <i-input value="{{ order.code }}" title="电梯编号" autofocus placeholder="请输入电梯编号"/>
+    <i-input value="{{ order.address }}" title="电梯地址" placeholder="请输入手机号"/>
+    <i-input value="{{ order.peopleNum }}" title="被困人数" type="number" placeholder="请输入被困人数"/>
+    <i-input value="{{ order.phone }}" title="困人电话" type="number" placeholder="请输入困人电话"/>
+    <i-input style="height: 200px;" value="{{ order.remark }}" type="textarea" title="来电备注"/>
+  </i-panel>
+  <i-button bind:click="handleClick" type="primary">提交</i-button>
+</scroll-view>

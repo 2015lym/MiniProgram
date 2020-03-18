@@ -1,4 +1,0 @@
-<!--pages/insurance/insurance-order/insurance-order.wxml-->
-<i-cell-group>
-    <i-cell wx:for="{{listData}}" wx:key="GroupId" wx:for-item="item" title="{{item.LiftNum}}等{{item.InsuranceOrderNum}}部电梯" value="{{item.InsuranceBeginTime}}" label="太平洋保险" url="/pages/insurance/pay-insurance-order/pay-insurance-order?groupId={{item.GroupId}}" is-link></i-cell>
-</i-cell-group>

@@ -1,5 +1,0 @@
-/* pages/elevator-detail/echarts1/echarts1.wxss */
-.container {
-  width: 100%;
-  height: 200px;
-}

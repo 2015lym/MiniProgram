@@ -1,9 +1,0 @@
-<!--pages/insurance/pay-insurance-order/cancel-insurance/cancel-insurance.wxml-->
-
-<view class="back-view">
-  <textarea class="feedback-area" value="{{feedbackText}}" placeholder="请输入退保原因" maxlength="100" bindinput="bindinput"></textarea>
-</view>
-
-<i-button bind:click="submit" type="primary">提交退保申请</i-button>
-
-<i-toast id="toast" />

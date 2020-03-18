@@ -1,6 +1,0 @@
-{
-  "navigationBarTitleText": "运行里程详情",
-  "usingComponents": {
-    "echarts1": "../elevator-detail/echarts1/echarts1"
-  }
-}

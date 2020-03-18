@@ -1,7 +1,0 @@
-/* pages/insurance/pay-insurance-order/cancel-insurance-list/cancel-insurance-list.wxss */
-
-.view-title {
-  margin-left: 32px;
-  font-size: 15px;
-  font-weight: bold;
-}
