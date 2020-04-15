@@ -105,7 +105,7 @@ Page({
         userInfo: e.detail.userInfo,
         hasUserInfo: true
       });
-      Request.post('WeChatMiniApps/SaveMiniAppsUser', {
+      Request.post('https://www2.dianti119.com/api/WeChatMiniApps/SaveMiniAppsUser', {
         nickname: this.data.userInfo.nickName,
         sex: this.data.userInfo.gender,
         province: this.data.userInfo.province,
@@ -132,7 +132,7 @@ Page({
         type: 'error'
       });
     } else {
-      Request.post('WeChatMiniApps/BindUser', {
+      Request.post('https://www2.dianti119.com/api/WeChatMiniApps/BindUser', {
         encryptedData: e.detail.encryptedData,
         iv: e.detail.iv,
         sessionKey: wx.getStorageSync('sessionKey'),

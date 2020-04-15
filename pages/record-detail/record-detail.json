@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "处置记录详情",
+  "usingComponents": {
+    "i-card": "/dist/card/index",
+    "i-icon": "/dist/icon/index"
+  }
+}

@@ -1,0 +1,51 @@
+<!--pages/record-detail/record-detail.wxml-->
+<map longitude="123.405261" latitude="41.745071" scale="14" class="map-view">
+</map>
+<view style="margin-top:10px"></view>
+
+<i-card>
+  <view slot="content" class="card-view">
+    <text style="font-size: 15px;">救援信息</text>
+    <text class="text-view">\n救援状态：系统自动评价</text>
+    <text class="text-view">\n救援类型：维保救援</text>
+    <text class="text-view">\n救援人员：孙志全(159441218407)</text>
+    <text class="text-view">\n所属公司：辽宁富祥电梯技术有限公司</text>
+    <text class="text-view">\n报警生成时间：2020-03-26</text>
+    <text class="text-view">\n物业确认时间：2020-03-26</text>
+    <text class="text-view">\n维保接单时间：2020-03-26</text>
+    <text class="text-view">\n维保到场时间：2020-03-26</text>
+    <text class="text-view">\n完成救援时间：2020-03-26</text>
+  </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="card-view">
+    <text style="font-size: 15px;">电梯信息</text>
+    <text class="text-view">\n电梯编号：404151</text>
+    <text class="text-view">\n注册证号：30102103332010074340</text>
+    <text class="text-view">\n出厂编号：GLA9770</text>
+    <text class="text-view">\n用户编号：P2</text>
+    <text class="text-view">\n电梯品牌：华升富士达电梯有限公司</text>
+    <text class="text-view">\n电梯型号：EXCELGVF-II</text>
+    <text class="text-view">\n电梯位置：大陆街北-九道街 171栋</text>
+    <text class="text-view">\n使用场所：住宅</text>
+    <text class="text-view">\n电梯类型：曳引</text>
+    <text class="text-view">\n年检日期：</text>
+    <text class="text-view">\n使用单位：鞍山市铁西房产经营管</text>
+    <text class="text-view" space="emsp">\n管理人员：王静(15541261998\n     付维(13898062118)</text>
+    <text class="text-view">\n维保单位：辽宁富祥电梯技术有限公司</text>
+    <text class="text-view" space="emsp">\n维保人员：韩庆元(13942231985)\n     刘东(13704924408)\n     孙志全(159441218407)</text><i-icon type="mobilephone_fill" size="20" color="#004E9F" />
+  </view>
+</i-card>
+
+<i-card>
+  <view slot="content" class="card-view">
+    <text style="font-size: 15px;">报警信息</text>
+    <text class="text-view">\n任务来源：人工下单</text>
+    <text class="text-view">\n被困人数：1</text>
+    <text class="text-view">\n联系电话：</text>
+    <text class="text-view">\n任务备注：</text>
+    <text class="text-view">\n故障原因：厅门锁失效</text>
+    <text class="text-view">\n救援方法：平层开门放人</text>
+  </view>
+</i-card>

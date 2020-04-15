@@ -4,7 +4,8 @@
     "pages/tabs/mine/mine",
     "pages/feedback/feedback",
     "pages/about/about",
-    "pages/video/video"
+    "pages/video/video",
+    "pages/record-detail/record-detail"
   ],
   "tabBar": {
     "selectedColor": "#2C8BEF",

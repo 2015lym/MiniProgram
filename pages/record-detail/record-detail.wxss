@@ -1,0 +1,10 @@
+/* pages/record-detail/record-detail.wxss */
+.map-view {
+  width: 100%;
+  height: 200px;
+}
+
+.text-view {
+  color:#80848f;
+  line-height: 25px;
+}

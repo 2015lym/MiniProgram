@@ -1,7 +1,11 @@
-const apiHttp = "https://www2.dianti119.com/api/";
+const apiHttp = "https://www.dianti119.com/api/";
 const socketHttp = "wss://*****.com/wss";
 
 function httpReuqest(url, method, data, header) {
+  var requestUrl = url;
+  if (url.indexOf('http') == -1) {
+    requestUrl = apiHttp + url;
+  }
   data = data || {};
   data.openId = wx.getStorageSync('openId')
   header = header || {};
@@ -11,10 +15,12 @@ function httpReuqest(url, method, data, header) {
       header["SESSIONID"] = sessionId;
     }
   }
+  header['UserId'] = wx.getStorageSync('userInfo').UserId;
+
   wx.showNavigationBarLoading();
   let promise = new Promise(function(resolve, reject) {
     wx.request({
-      url: apiHttp + url,
+      url: requestUrl,
       header: header,
       data: data,
       method: method,

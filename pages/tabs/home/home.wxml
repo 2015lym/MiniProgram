@@ -7,11 +7,11 @@
   <view wx:if="{{selectIndex != 1}}" class="button-view" bindtap="selectBtn" data-value="1">救援列表</view>
   <view wx:if="{{selectIndex == 1}}" class="button-select-view" bindtap="selectBtn" data-value="1">救援列表</view>
 
-  <view wx:if="{{selectIndex != 2}}" class="button-view" bindtap="selectBtn" data-value="2">人工下单</view>
-  <view wx:if="{{selectIndex == 2}}" class="button-select-view" bindtap="selectBtn" data-value="2">人工下单</view>
+  <view wx:if="{{selectIndex != 2}}" class="button-view" bindtap="selectBtn" data-value="2">处置记录</view>
+  <view wx:if="{{selectIndex == 2}}" class="button-select-view" bindtap="selectBtn" data-value="2">处置记录</view>
 
-  <view wx:if="{{selectIndex != 3}}" class="button-view" bindtap="selectBtn" data-value="3">处置记录</view>
-  <view wx:if="{{selectIndex == 3}}" class="button-select-view" bindtap="selectBtn" data-value="3">处置记录</view>
+  <view wx:if="{{selectIndex != 3}}" class="button-view" bindtap="selectBtn" data-value="3">人工下单</view>
+  <view wx:if="{{selectIndex == 3}}" class="button-select-view" bindtap="selectBtn" data-value="3">人工下单</view>
 </view>
 
 <map wx:if="{{selectIndex == 0}}" longitude="123.405261" latitude="41.745071" scale="14" class="map-view">
@@ -21,20 +21,37 @@
 </map>
 
 <view wx:if="{{selectIndex == 1}}" class="map-view">
-
+  <i-tabs current="{{ currentTab }}" bindchange="handleChangeTab">
+    <i-tab key="tab1" title="未接单"></i-tab>
+    <i-tab key="tab2" title="已接单"></i-tab>
+  </i-tabs>
 </view>
 
 <view wx:if="{{selectIndex == 2}}" class="map-view">
-
+  <view style="margin-top:10px"></view>
+  <i-card wx:for="{{recordList}}" wx:key="{{recordList}}" bindtap="recordDetail">
+    <view slot="content" class="card-view">
+      <view class="card-left-view">
+        <text>电梯编号</text>
+        <text style="color:#FF8000">\n450064</text>
+        <text style="color:#80848f">\n已用时</text>
+        <text style="color:#007AFF">\n19分钟</text>
+      </view>
+      <view class="card-right-view">
+        <text>地址：</text>
+        <text style="color:#80848f">\n辽宁省 抚顺市 顺城区完全欧博城25#楼 2单元 25-2</text>
+        <text style="color:#80848f">\n2019-09-19 18:03:40</text>
+      </view>
+    </view>
+  </i-card>
 </view>
 
 <scroll-view wx:if="{{selectIndex == 3}}" class="map-view" scroll-y>
-  <i-panel title="人工下单">
-    <i-input value="{{ order.code }}" title="电梯编号" autofocus placeholder="请输入电梯编号"/>
-    <i-input value="{{ order.address }}" title="电梯地址" placeholder="请输入手机号"/>
-    <i-input value="{{ order.peopleNum }}" title="被困人数" type="number" placeholder="请输入被困人数"/>
-    <i-input value="{{ order.phone }}" title="困人电话" type="number" placeholder="请输入困人电话"/>
-    <i-input style="height: 200px;" value="{{ order.remark }}" type="textarea" title="来电备注"/>
-  </i-panel>
-  <i-button bind:click="handleClick" type="primary">提交</i-button>
+  <image src="../../../resource/images/rgxd.jpg" class="banner-img" mode="widthFix"></image>
+  <i-input bind:change="changeCode" title="电梯编号" autofocus placeholder="请输入电梯编号" />
+  <i-input disabled title="电梯地址" value="{{ order.address }}" />
+  <i-input bind:change="changePeopleNum" title="被困人数" value="{{ order.rescueNumber }}" type="number" placeholder="请输入被困人数" />
+  <i-input bind:change="changePhone" title="困人电话" type="number" placeholder="请输入困人电话" />
+  <i-input bind:change="changeRemark" type="textarea" title="来电备注" />
+  <i-button bind:click="submitOrder" type="primary">提交</i-button>
 </scroll-view>

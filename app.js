@@ -16,7 +16,7 @@ App({
     wx.login({
       success: data => {
 
-        Request.get('WeChatMiniApps/GetWeChatMiniAppsOpenId', {
+        Request.get('https://www2.dianti119.com/api/WeChatMiniApps/GetWeChatMiniAppsOpenId', {
           code: data.code
         }).then(res => {
           if (res.data.Success == true) {
@@ -60,7 +60,7 @@ App({
               if (this.userInfoReadyCallback) {
                 this.userInfoReadyCallback(res)
               }
-              Request.post('WeChatMiniApps/SaveMiniAppsUser', {
+              Request.post('https://www2.dianti119.com/api/WeChatMiniApps/SaveMiniAppsUser', {
                 nickname: res.userInfo.nickName,
                 sex: res.userInfo.gender,
                 province: res.userInfo.province,

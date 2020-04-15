@@ -14,7 +14,6 @@ page {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  
 }
 
 .button-view {
@@ -46,4 +45,21 @@ page {
   position: absolute;
   right: 0px;
   top: 0px;
+}
+
+.banner-img {
+  width: 100%;
+  height: inherit;
+}
+
+.card-view {
+  display: flex;
+}
+
+.card-left-view {
+  width: 30%;
+}
+
+.card-right-view {
+  width: 70%;
 }

@@ -3,7 +3,9 @@
   "backgroundTextStyle": "dark",
   "usingComponents": {
     "i-button": "/dist/button/index",
-    "i-panel": "../../dist/panel/index",
-    "i-input": "../../dist/input/index"
+    "i-input": "../../dist/input/index",
+    "i-card": "/dist/card/index",
+        "i-tabs": "../../dist/tabs/index",
+        "i-tab": "../../dist/tab/index"
   }
 }
