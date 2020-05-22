@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "服务评价",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "i-button": "/dist/button/index",
+    "i-rate": "/dist/rate/index",
+    "i-cell-group": "/dist/cell-group/index",
+    "i-cell": "/dist/cell/index"
+  }
+}

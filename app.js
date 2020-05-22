@@ -1,6 +1,6 @@
 //app.js
 const Request = require("./utils/request.js");
-import NIM from './vendors/NIM_Web_NIM_weixin_v6.10.0.js'
+import NIM from './vendors/NIM_Web_NIM_weixin_v7.5.0.js'
 
 App({
   userInfo: null,

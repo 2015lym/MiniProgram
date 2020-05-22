@@ -1,5 +1,5 @@
 // pages/video/video.js
-import NIM from '../../vendors/NIM_Web_NIM_weixin_v6.10.0.js'
+import NIM from '../../vendors/NIM_Web_NIM_weixin_v7.5.0.js'
 
 const Request = require('../../utils/request.js');
 let app = getApp()
@@ -20,6 +20,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options.wyAccount);
     this.setData({
       account: options.wyAccount,
       channelName: options.roomId

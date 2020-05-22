@@ -1,0 +1,31 @@
+<!--pages/phone-detail/phone-detail.wxml-->
+
+<view class="top-view">
+  <view class="top-sub-view">
+    <text style="text-align:center;color:gray;">电梯编号\n<text style="color:black">{{detail.Lift.LiftNum}}</text></text>
+  </view>
+  <view class="top-sub-view">
+    <text style="text-align:center;color:gray;">总时间\n<text style="color:#FF8000">{{detail.TotalLossTime}}分</text></text>
+  </view>
+</view>
+<view class="sub-view">
+  <i-icon type="warning" size="20" color="#004E9F" /> {{detail.StatusName}}
+</view>
+
+<view style="margin-top:10px"></view>
+
+<i-card>
+  <view slot="content" class="card-view">
+    <text style="font-size: 15px;">救援信息</text>
+    <text class="text-view">\n救援状态：{{detail.StatusName}}</text>
+    <text wx:if="{{ detail.RescueType == 1}}" class="text-view">\n救援类型：维保救援</text>
+    <text wx:if="{{ detail.RescueType == 2 || detail.RescueType == 3}}" class="text-view">\n救援类型：应急救援</text>
+    <text class="text-view">\n救援人员：{{detail.RemedyUser}}</text>
+    <text class="text-view">\n所属公司：{{detail.RemedyUserDeptName}}</text>
+    <text class="text-view">\n报警生成时间：{{detail.CreateTime}}</text>
+    <text class="text-view">\n物业确认时间：{{detail.UseConfirmTime}}</text>
+    <text class="text-view">\n维保接单时间：{{detail.MaintConfirmTime}}</text>
+    <text class="text-view">\n维保到场时间：{{detail.MaintArriveTime}}</text>
+    <text class="text-view">\n完成救援时间：{{detail.RescueCompleteTime}}</text>
+  </view>
+</i-card>

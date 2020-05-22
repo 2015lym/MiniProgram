@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "视频",
+  "usingComponents": {
+    "yunxin-pusher": "../../component/yunxin-pusher/yunxin-pusher",
+    "yunxin-player": "../../component/yunxin-player/yunxin-player"
+  }
+}

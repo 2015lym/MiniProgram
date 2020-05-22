@@ -1,0 +1,33 @@
+/* pages/phone-detail/phone-detail.wxss */
+
+
+.top-view {
+  display: flex;
+  background-color: white;
+  border-bottom: 1px solid #e9eaec;
+}
+
+.top-sub-view {
+  width: 50%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-view {
+  padding: 8px;
+  background-color: white;
+}
+
+
+.text-view {
+  color: #80848f;
+  line-height: 25px;
+}
+
+.text-users-view {
+  color: #80848f;
+  line-height: 25px;
+  display: flex;
+}

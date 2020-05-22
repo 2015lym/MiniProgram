@@ -15,7 +15,9 @@ function httpReuqest(url, method, data, header) {
       header["SESSIONID"] = sessionId;
     }
   }
-  header['UserId'] = wx.getStorageSync('userInfo').UserId;
+  header['userid'] = wx.getStorageSync('userInfo').UserId;
+  
+  // header['UserId'] = '38865';
 
   wx.showNavigationBarLoading();
   let promise = new Promise(function(resolve, reject) {

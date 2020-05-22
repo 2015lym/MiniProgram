@@ -1,0 +1,26 @@
+<!--pages/resuce-done/resuce-done.wxml-->
+
+<i-input bind:change="changePeopleNum" title="被困人数" type="number" placeholder="请输入被困人数" />
+<i-input bind:change="changePhone" title="困人电话" type="number" placeholder="请输入困人电话" />
+<i-input bind:change="changeRemark" title="警情描述" />
+
+
+<i-panel title="故障原因">
+  <i-radio-group current="{{reason}}" bindchange="handleReasonChange">
+    <i-radio wx:for="{{reasonArr}}" wx:key="{{item.tagId}}" value="{{item.tagName}}">
+    </i-radio>
+  </i-radio-group>
+</i-panel>
+
+<i-panel title="解救方法">
+  <i-radio-group current="{{way}}" bindchange="handleWayChange">
+    <i-radio wx:for="{{wayArr}}" wx:key="{{item.tagId}}" value="{{item.tagName}}">
+    </i-radio>
+  </i-radio-group>
+</i-panel>
+
+<!-- <i-input bind:change="changeReasonDetail" title="故障原因" />
+
+<i-input bind:change="changeWayDetail" title="解救方法" /> -->
+
+<i-button bind:click="submitOrder" type="primary">提交信息</i-button>

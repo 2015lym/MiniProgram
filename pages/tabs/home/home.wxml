@@ -14,10 +14,36 @@
   <view wx:if="{{selectIndex == 3}}" class="button-select-view" bindtap="selectBtn" data-value="3">人工下单</view>
 </view>
 
-<map wx:if="{{selectIndex == 0}}" longitude="123.405261" latitude="41.745071" scale="14" class="map-view">
-  <view class="map-button-view">
-    <i-button bind:click="careElevator" type="success" size="small">刷新</i-button>
-  </view>
+<map wx:if="{{selectIndex == 0}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" class="map-view" markers="{{markers}}" bindmarkertap="markertap">
+  <cover-view>
+    <cover-view class="resuce-info">
+      <cover-view wx:if="{{selectMark}}" bindtap="resuceInfo" class="resuce-info-button">救援信息</cover-view>
+      <cover-view wx:if="{{selectMark}}" bindtap="phoneDetail" class="resuce-info-button">电话跟进</cover-view>
+    </cover-view>
+    <cover-view class="sub-view">
+      <cover-view class="video-view">
+        <!-- <button wx:if="{{selectMark}}" bindtap="callBack" class="video-button">点击回拨</button>
+        <button wx:if="{{selectMark}}" bindtap="monitoring" class="video-button">点击监控</button> -->
+        <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '接单' }}" src="../../../resource/images/dlxx_btn_jd.png" class="left-image"></cover-image>
+        <cover-image bindtap="tapImageJd" wx:if="{{selectMark && currentAction.ActionName == '误报' }}" src="../../../resource/images/dlxx_btn_jd.png" class="left-image"></cover-image>
+        <!-- <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '误报' }}" src="../../../resource/images/dlxx_btn_wb.png" class="left-image"></cover-image> -->
+        <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '安装调试' }}" src="../../../resource/images/dlxx_btn_ts.png" class="left-image"></cover-image>
+        <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '完成救援' }}" src="../../../resource/images/dlxx_btn_wcjy.png" class="left-image"></cover-image>
+        <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '确认到场' }}" src="../../../resource/images/dlxx_btn_qrdc.png" class="left-image"></cover-image>
+        <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '确认报警' }}" src="../../../resource/images/dlxx_btn_qrbj.png" class="left-image"></cover-image>
+        <cover-image bindtap="tapImage" wx:if="{{selectMark && currentAction.ActionName == '服务评价' }}" src="../../../resource/images/dlxx_btn_pj.png" class="left-image"></cover-image>
+      </cover-view>
+      <button bindtap="getHomeList" class="refresh-button">刷新</button>
+    </cover-view>
+  </cover-view>
+  <cover-view wx:if="{{selectMark}}" class="bottom-view">
+    <cover-view class="bottom-flex-view">
+      <cover-view bindtap="resuceInfo" class="bottom-view-item">报警时间\n{{currentElevator.UseConfirmTime}}</cover-view>
+      <cover-view bindtap="phoneDetail" class="bottom-view-item">累计用时\n{{currentElevator.TotalLossTime}}</cover-view>
+      <cover-view bindtap="phoneDetail" class="bottom-view-item">接单时间\n{{currentElevator.MaintConfirmTime}}</cover-view>
+      <cover-view bindtap="phoneDetail" class="bottom-view-item">救援完成\n{{currentElevator.RescueCompleteTime}}</cover-view>
+    </cover-view>
+  </cover-view>
 </map>
 
 <view wx:if="{{selectIndex == 1}}" class="map-view">
@@ -25,22 +51,39 @@
     <i-tab key="tab1" title="未接单"></i-tab>
     <i-tab key="tab2" title="已接单"></i-tab>
   </i-tabs>
+  <view style="margin-top:10px"></view>
+  <i-card wx:for="{{realRescueList}}" wx:for-item="item" wx:key="ID" data-item="{{item}}" bindtap="resuceDetail">
+    <view slot="content" class="card-view">
+      <view class="card-left-view">
+        <text>电梯编号</text>
+        <text style="color:#FF8000">\n{{item.Lift.LiftNum}}</text>
+        <text style="color:#80848f">\n已用时</text>
+        <text style="color:#007AFF">\n{{item.TotalLossTime}}分钟</text>
+      </view>
+      <view class="card-right-view">
+        <text>地址：</text>
+        <text style="color:#80848f">\n{{item.Lift.InstallationAddress}}</text>
+        <text style="color:#80848f">\n{{item.CreateTime}}</text>
+      </view>
+    </view>
+    <view slot="footer" class="card-footer">状态：{{item.StatusName}}</view>
+  </i-card>
 </view>
 
 <view wx:if="{{selectIndex == 2}}" class="map-view">
   <view style="margin-top:10px"></view>
-  <i-card wx:for="{{recordList}}" wx:key="{{recordList}}" bindtap="recordDetail">
+  <i-card wx:for="{{recordList}}" wx:for-item="item" wx:key="ID" data-item="{{item}}" bindtap="recordDetail">
     <view slot="content" class="card-view">
       <view class="card-left-view">
         <text>电梯编号</text>
-        <text style="color:#FF8000">\n450064</text>
+        <text style="color:#FF8000">\n{{item.LiftNum}}</text>
         <text style="color:#80848f">\n已用时</text>
-        <text style="color:#007AFF">\n19分钟</text>
+        <text style="color:#007AFF">\n{{item.TotalLossTime}}分钟</text>
       </view>
       <view class="card-right-view">
         <text>地址：</text>
-        <text style="color:#80848f">\n辽宁省 抚顺市 顺城区完全欧博城25#楼 2单元 25-2</text>
-        <text style="color:#80848f">\n2019-09-19 18:03:40</text>
+        <text style="color:#80848f">\n{{item.InstallationAddress}}</text>
+        <text style="color:#80848f">\n{{item.CreateTime}}</text>
       </view>
     </view>
   </i-card>

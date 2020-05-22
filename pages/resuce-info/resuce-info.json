@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "救援信息",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "i-card": "/dist/card/index",
+    "i-icon": "/dist/icon/index"
+  }
+}

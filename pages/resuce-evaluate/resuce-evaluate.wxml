@@ -1,0 +1,20 @@
+<!--pages/resuce-evaluate/resuce-evaluate.wxml-->
+<view class="top-view">
+  <image src="../../resource/images/pj_mark.png" mode="widthFix" style="width: 60%;"></image>
+</view>
+<i-cell-group>
+  <i-cell title="到场情况">
+    <i-rate bind:change="onChange1" value="{{starIndex1}}" size="32">
+    </i-rate>
+  </i-cell>
+  <i-cell title="救援过程">
+    <i-rate bind:change="onChange2" value="{{starIndex2}}" size="32">
+    </i-rate>
+  </i-cell>
+  <i-cell title="工作态度">
+    <i-rate bind:change="onChange3" value="{{starIndex3}}" size="32">
+    </i-rate>
+  </i-cell>
+</i-cell-group>
+
+<i-button bind:click="submitOrder" type="primary">提交信息</i-button>

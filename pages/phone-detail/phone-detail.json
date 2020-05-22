@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "电话跟进",
+  "backgroundTextStyle": "dark",
+  "usingComponents": {
+    "i-card": "/dist/card/index",
+    "i-icon": "/dist/icon/index"
+  }
+}
